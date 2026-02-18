@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "repair": "python3 scripts/repair.py",
+    "repair:git": "python3 scripts/repair.py --git",
+    "repair:check": "python3 scripts/repair.py --check"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

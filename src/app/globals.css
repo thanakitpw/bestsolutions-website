@@ -9,6 +9,9 @@
   --font-body: 'Noto Sans Thai', ui-sans-serif, system-ui, sans-serif;
 
   --animate-blob: blob 7s infinite;
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-marquee-fwd: marquee-fwd 35s linear infinite;
+  --animate-marquee-bwd: marquee-bwd 28s linear infinite;
 
   @keyframes blob {
     0% {
@@ -25,6 +28,33 @@
 
     100% {
       transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes marquee-fwd {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-bwd {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
     }
   }
 }
