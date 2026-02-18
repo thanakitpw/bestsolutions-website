@@ -5,9 +5,9 @@
 -- ============================================================
 
 -- ============================================================
--- TABLE: articles (บทความ)
+-- TABLE: blog_posts (บทความ)
 -- ============================================================
-CREATE TABLE IF NOT EXISTS public.articles (
+CREATE TABLE IF NOT EXISTS public.blog_posts (
     id          uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     slug        text NOT NULL UNIQUE,
     title       text NOT NULL,
@@ -39,8 +39,8 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
-CREATE TRIGGER update_articles_updated_at
-    BEFORE UPDATE ON public.articles
+CREATE TRIGGER update_blog_posts_updated_at
+    BEFORE UPDATE ON public.blog_posts
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- ============================================================
@@ -79,12 +79,12 @@ CREATE TRIGGER update_portfolios_updated_at
 -- ROW LEVEL SECURITY (RLS)
 -- ============================================================
 -- Enable RLS for security
-ALTER TABLE public.articles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.blog_posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.portfolios ENABLE ROW LEVEL SECURITY;
 
 -- Allow public READ access (website visitors)
-CREATE POLICY "Allow public read articles"
-    ON public.articles FOR SELECT
+CREATE POLICY "Allow public read blog_posts"
+    ON public.blog_posts FOR SELECT
     USING (true);
 
 CREATE POLICY "Allow public read portfolios"
@@ -94,14 +94,14 @@ CREATE POLICY "Allow public read portfolios"
 -- ============================================================
 -- INDEXES (for performance)
 -- ============================================================
-CREATE INDEX IF NOT EXISTS idx_articles_slug ON public.articles(slug);
-CREATE INDEX IF NOT EXISTS idx_articles_published_at ON public.articles(published_at DESC);
+CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON public.blog_posts(slug);
+CREATE INDEX IF NOT EXISTS idx_blog_posts_published_at ON public.blog_posts(published_at DESC);
 CREATE INDEX IF NOT EXISTS idx_portfolios_slug ON public.portfolios(slug);
 
 -- ============================================================
 -- SEED DATA (นำข้อมูลเดิมเข้าฐานข้อมูล)
 -- ============================================================
-INSERT INTO public.articles (slug, title, excerpt, content, cover_image, category, tags, author_name, published_at) VALUES
+INSERT INTO public.blog_posts (slug, title, excerpt, content, cover_image, category, tags, author_name, published_at) VALUES
 (
     'future-of-ai-marketing',
     'อนาคตของการตลาดในยุค AI: ปรับตัวอย่างไรให้รอด?',
