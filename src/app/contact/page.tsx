@@ -20,7 +20,7 @@ const contactInfo = [
     {
         icon: Phone,
         title: "โทรศัพท์",
-        details: ["02-XXX-XXXX", "08X-XXX-XXXX"],
+        details: ["095-385-7029"],
         color: "bg-green-100 text-green-600"
     },
     {

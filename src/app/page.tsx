@@ -325,21 +325,50 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">เสียงตอบรับจากลูกค้า</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
-                <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">"</div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-slate-200" />
-                  <div>
-                    <div className="font-bold text-slate-900">คุณ {i === 1 ? 'สมชาย' : i === 2 ? 'วิภา' : 'เอก'}</div>
-                    <div className="text-xs text-slate-500">CEO, Company {i}</div>
-                  </div>
+            {/* Testimonial 1 */}
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
+              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500" />
+                <div>
+                  <div className="font-bold text-slate-900">คุณ ธนกฤต</div>
+                  <div className="text-xs text-slate-500">กรรมการผู้จัดการ, บจก. สมาร์ท ดิจิตอล คอมเมิร์ซ</div>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
-                  "ทีมงาน Best Solutions เป็นมืออาชีพมาก ช่วยให้ยอดขายของเราเพิ่มขึ้นอย่างชัดเจน แนะนำเลยครับสำหรับใครที่มองหาที่ปรึกษาการตลาด"
-                </p>
               </div>
-            ))}
+              <p className="text-slate-600 leading-relaxed">
+                &quot;ตั้งแต่ใช้บริการยิงแอดกับ Best Solutions ยอดขายออนไลน์เพิ่มขึ้น 3 เท่าภายใน 2 เดือน ทีมงานวิเคราะห์ข้อมูลละเอียดและปรับกลยุทธ์ได้รวดเร็วมากครับ&quot;
+              </p>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
+              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-red-500" />
+                <div>
+                  <div className="font-bold text-slate-900">คุณ ปวีณา</div>
+                  <div className="text-xs text-slate-500">เจ้าของแบรนด์, Glowly Skincare</div>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                &quot;เว็บไซต์ที่ Best Solutions ทำให้สวยมากค่ะ ลูกค้าชมว่าใช้งานง่าย ยอดสั่งซื้อผ่านเว็บเพิ่มขึ้นเรื่อยๆ ชอบที่ทีมงานใส่ใจรายละเอียดทุกจุดเลยค่ะ&quot;
+              </p>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
+              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-500" />
+                <div>
+                  <div className="font-bold text-slate-900">คุณ อนุชา</div>
+                  <div className="text-xs text-slate-500">ผู้อำนวยการฝ่ายการตลาด, โรงแรมริเวอร์วิว</div>
+                </div>
+              </div>
+              <p className="text-slate-600 leading-relaxed">
+                &quot;SEO ที่ทำให้เว็บโรงแรมเราติดหน้าแรก Google ภายใน 3 เดือน จากเดิมที่แทบไม่มีคนเข้าเว็บ ตอนนี้ได้ลูกค้าจากออร์แกนิกเพิ่มขึ้นกว่า 200% ครับ&quot;
+              </p>
+            </div>
           </div>
         </div>
       </section>
