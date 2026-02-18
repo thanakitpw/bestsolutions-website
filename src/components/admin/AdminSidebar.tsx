@@ -10,7 +10,7 @@ import {
     Globe,
     ChevronRight,
     Settings,
-    LogOut,
+    Upload,
 } from "lucide-react";
 
 const navItems = [
@@ -24,6 +24,12 @@ const navItems = [
         label: "Blog Posts",
         href: "/admin/blog",
         icon: FileText,
+        exact: true,
+    },
+    {
+        label: "Import .docx",
+        href: "/admin/blog/import",
+        icon: Upload,
     },
     {
         label: "Portfolio",

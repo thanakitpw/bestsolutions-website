@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getArticles } from "@/lib/services/articleService";
-import { Plus, Pencil, Eye, FileText } from "lucide-react";
+import { Plus, Pencil, Eye, FileText, Upload } from "lucide-react";
 import { DeleteBlogButton } from "./DeleteBlogButton";
 
 export default async function AdminBlogPage() {
@@ -14,12 +14,20 @@ export default async function AdminBlogPage() {
                     <h1 className="text-3xl font-bold text-white">Blog Posts</h1>
                     <p className="text-slate-500 mt-1 text-sm">{posts.length} บทความทั้งหมด</p>
                 </div>
-                <Link
-                    href="/admin/blog/new"
-                    className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors shadow-lg shadow-blue-500/20"
-                >
-                    <Plus className="w-4 h-4" /> New Post
-                </Link>
+                <div className="flex items-center gap-3">
+                    <Link
+                        href="/admin/blog/import"
+                        className="flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white px-4 py-2.5 rounded-xl text-sm font-medium transition-colors border border-white/10"
+                    >
+                        <Upload className="w-4 h-4" /> Import .docx
+                    </Link>
+                    <Link
+                        href="/admin/blog/new"
+                        className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors shadow-lg shadow-blue-500/20"
+                    >
+                        <Plus className="w-4 h-4" /> New Post
+                    </Link>
+                </div>
             </div>
 
             {/* Table */}
