@@ -200,11 +200,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     <p className="text-xl text-white/80 mb-10">
                         อย่าปล่อยให้ปัญหาของคุณคาราคาซัง ปรึกษาเราวันนี้เพื่อทางออกที่ดีที่สุด
                     </p>
-                    <Link href="/contact">
+                    <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
                         <Button size="lg" className="bg-white text-[var(--color-primary-start)] hover:bg-slate-100 text-lg px-10 py-6 h-auto shadow-xl">
                             ขอคำปรึกษาฟรี <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
-                    </Link>
+                    </a>
                 </div>
             </section>
 

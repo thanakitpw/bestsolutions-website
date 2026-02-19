@@ -7,7 +7,7 @@ const menuLinks = [
     { label: "ผลงาน", href: "/portfolio" },
     { label: "บทความ", href: "/blog" },
     { label: "บริการ", href: "/services" },
-    { label: "ติดต่อเรา", href: "/contact" },
+    { label: "ติดต่อเรา", href: "https://lin.ee/IlvhwZV" },
 ];
 
 const serviceLinks = [

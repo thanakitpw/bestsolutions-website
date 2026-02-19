@@ -209,11 +209,11 @@ export default function ServicesPage() {
                     <p className="text-xl text-white/80 mb-10">
                         ให้เราช่วยวิเคราะห์อาการฟรี ไม่มีค่าใช้จ่าย รับคำปรึกษาเบื้องต้นได้ทันที
                     </p>
-                    <Link href="/contact">
+                    <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
                         <Button size="lg" className="bg-white text-[var(--color-primary-start)] hover:bg-slate-100 text-lg px-10 py-6 h-auto shadow-xl">
                             ขอรับคำปรึกษาฟรี <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
-                    </Link>
+                    </a>
                 </div>
             </section>
 

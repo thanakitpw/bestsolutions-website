@@ -156,9 +156,9 @@ export default async function ProjectDetailPage({ params }: Props) {
 
                                 <div className="mt-10 pt-8 border-t border-slate-200">
                                     <p className="text-slate-500 text-sm mb-4">สนใจทำโปรเจกต์แบบนี้?</p>
-                                    <Link href="/contact" className="w-full block">
+                                    <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer" className="w-full block">
                                         <Button className="w-full" variant="gradient">ขอคำปรึกษาฟรี</Button>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </div>

@@ -29,13 +29,15 @@ export default function Home() {
               <p className="text-[15px] md:text-base text-[#6b7280] mb-10 leading-[1.8] max-w-md">
                 Digital Marketing Agency & Production House ที่ปรึกษา และวางแผนทางการตลาด บริการด้านโฆษณา ผ่านสื่อออนไลน์ ออกแบบสื่อสิ่งพิมพ์ และพัฒนาเว็บไซต์ สำหรับธุรกิจทุกขนาด
               </p>
-              <Button
-                variant="gradient"
-                size="lg"
-                className="h-14 px-12 text-base md:text-lg rounded-xl shadow-lg shadow-red-500/15 hover:shadow-xl hover:shadow-red-500/25 transition-shadow"
-              >
-                ปรึกษากับทีมการตลาดของเรา
-              </Button>
+              <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
+                <Button
+                  variant="gradient"
+                  size="lg"
+                  className="h-14 px-12 text-base md:text-lg rounded-xl shadow-lg shadow-red-500/15 hover:shadow-xl hover:shadow-red-500/25 transition-shadow"
+                >
+                  ปรึกษากับทีมการตลาดของเรา
+                </Button>
+              </a>
             </div>
 
             {/* Right - Hero Image */}
@@ -383,11 +385,11 @@ export default function Home() {
                 อย่าปล่อยให้โอกาสเติบโตหลุดลอยไป ปรึกษาเราวันนี้เพื่อวางแผนกลยุทธ์ที่ใช่สำหรับคุณ
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
+                <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
                   <Button size="lg" className="bg-white text-[var(--color-primary-end)] hover:bg-slate-50 border-0 h-14 px-8 text-lg rounded-full w-full sm:w-auto">
                     ขอใบเสนอราคาฟรี
                   </Button>
-                </Link>
+                </a>
                 <Link href="/services">
                   <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white h-14 px-8 text-lg rounded-full w-full sm:w-auto bg-transparent">
                     ดูแพ็คเกจบริการ
