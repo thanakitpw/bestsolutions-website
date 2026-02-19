@@ -5,8 +5,11 @@ import Link from "next/link";
 import { Monitor, BarChart3, TrendingUp, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { TechStack } from "@/components/TechStack";
-import { OurClients } from "@/components/OurClients";
 import { AboutUs } from "@/components/AboutUs";
+import { HowWeWork } from "@/components/HowWeWork";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { OurClients } from "@/components/OurClients";
+import { LoadMoreButton } from "@/components/LoadMoreButton";
 
 export default function Home() {
   return (
@@ -64,49 +67,6 @@ export default function Home() {
       {/* About Us */}
       <AboutUs />
 
-      {/* Our Clients */}
-      <OurClients />
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary-start)] to-[var(--color-primary-end)] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-12 h-12 rounded-xl bg-[var(--color-primary-start)]/10 text-[var(--color-primary-start)] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[var(--color-primary-start)] transition-colors">การันตีผลลัพธ์</h3>
-              <p className="text-slate-500 text-sm">วัดผลได้จริง ทุกยอดวิวและยอดขายเพิ่มขึ้นอย่างเป็นรูปธรรม</p>
-            </div>
-            <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-purple-500 to-indigo-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Monitor className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-purple-600 transition-colors">เชี่ยวชาญครบวงจร</h3>
-              <p className="text-slate-500 text-sm">ดูแลตั้งแต่เว็บไซต์ โฆษณา จนถึงคอนเทนต์ ครบจบในที่เดียว</p>
-            </div>
-            <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-orange-400 to-red-500 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <BarChart3 className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors">วิเคราะห์เชิงลึก</h3>
-              <p className="text-slate-500 text-sm">ใช้ Data-Driven Strategy ในการวางแผนเพื่อความแม่นยำสูงสุด</p>
-            </div>
-            <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-green-400 to-emerald-600 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <div className="font-bold text-xl">24/7</div>
-              </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">ซัพพอร์ตตลอดเวลา</h3>
-              <p className="text-slate-500 text-sm">ทีมงานพร้อมดูแลและแก้ไขปัญหาให้ธุรกิจคุณไม่สะดุด</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Preview */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,13 +77,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Service 1 */}
-            <div className="group bg-white rounded-3xl p-8 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-300 relative overflow-hidden">
+            <div className="group bg-white rounded-3xl p-8 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-[var(--color-primary-start)]/5 transition-all duration-300 relative overflow-hidden">
               <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary-start)] to-[var(--color-primary-end)] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 text-[var(--color-primary-start)] shadow-sm group-hover:scale-110 transition-transform">
                 <Monitor className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[var(--color-primary-start)] transition-colors">Web Design</h3>
-              <p className="text-slate-500 leading-relaxed">ออกแบบและทำเว็บไซต์ให้ทันสมัย รองรับทุกอุปกรณ์ และทำ SEO ได้ดีเยี่ยม</p>
+              <p className="text-slate-500 leading-relaxed">
+                ออกแบบและทำเว็บไซต์ให้ทันสมัย รองรับทุกอุปกรณ์ และทำ SEO ได้ดีเยี่ยม
+              </p>
             </div>
 
             {/* Service 2 */}
@@ -133,7 +95,9 @@ export default function Home() {
                 <BarChart3 className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#8B1158] transition-colors">Online Marketing</h3>
-              <p className="text-slate-500 leading-relaxed">ยิงแอด Facebook, Google และ Tiktok ให้ตรงกลุ่มเป้าหมาย คุ้มค่าทุกบาท</p>
+              <p className="text-slate-500 leading-relaxed">
+                ยิงแอด Facebook, Google และ Tiktok ให้ตรงกลุ่มเป้าหมาย คุ้มค่าทุกบาท
+              </p>
             </div>
 
             {/* Service 3 */}
@@ -143,7 +107,9 @@ export default function Home() {
                 <TrendingUp className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[var(--color-primary-end)] transition-colors">SEO Services</h3>
-              <p className="text-slate-500 leading-relaxed">ดันอันดับเว็บให้ติดหน้าแรก Google เพิ่มยอดคนเข้าชมและยอดขายแบบธรรมชาติ</p>
+              <p className="text-slate-500 leading-relaxed">
+                ดันอันดับเว็บให้ติดหน้าแรก Google เพิ่มยอดคนเข้าชมและยอดขายแบบธรรมชาติ
+              </p>
             </div>
           </div>
         </div>
@@ -207,7 +173,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Insights (Blog) - NEW SECTION FROM BRAINSTORMING */}
+      {/* How We Work */}
+      <HowWeWork />
+
+      {/* Why Choose Us */}
+      <WhyChooseUs />
+
+      {/* Our Clients */}
+      <OurClients />
+
+      {/* Latest Insights (Blog) */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-end mb-12">
@@ -220,98 +195,9 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Fetching first 3 posts dynamically (simulated here) */}
-            {/* In a real component we would import blogPosts from data */}
-            {/* Post 1 */}
-            <Link href="/blog/future-of-ai-marketing" className="group">
-              <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                <div className="aspect-[16/10] bg-slate-200 relative overflow-hidden">
-                  <Image
-                    src="/images/future_of_ai_marketing_1770577806680.png"
-                    alt="Future of AI Marketing"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-medium text-[var(--color-primary-start)] bg-[var(--color-primary-start)]/10 px-2 py-1 rounded-full">Marketing</span>
-                    <span className="text-xs text-slate-400 py-1">Feb 15, 2024</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[var(--color-primary-start)] transition-colors line-clamp-2">
-                    อนาคตของการตลาดในยุค AI: ปรับตัวอย่างไรให้รอด?
-                  </h3>
-                  <p className="text-slate-500 text-sm line-clamp-3 mb-4 flex-1">
-                    AI กำลังเข้ามาเปลี่ยนแปลงวงการการตลาดอย่างสิ้นเชิง นักการตลาดต้องปรับตัวอย่างไรเพื่อใช้ประโยชน์จาก AI...
-                  </p>
-                  <div className="flex items-center text-[var(--color-primary-start)] font-medium text-sm group-hover:translate-x-2 transition-transform">
-                    อ่านต่อ <ArrowRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Post 2 */}
-            <Link href="/blog/web-design-trends-2025" className="group">
-              <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                <div className="aspect-[16/10] bg-slate-200 relative overflow-hidden">
-                  <Image
-                    src="/images/web_design_trends_2025_1770577822333.png"
-                    alt="Web Design Trends 2025"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded-full">Design</span>
-                    <span className="text-xs text-slate-400 py-1">Feb 10, 2024</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[var(--color-primary-start)] transition-colors line-clamp-2">
-                    เจาะลึกเทรนด์ Web Design ปี 2025: น้อยแต่มาก เรียบแต่โก้
-                  </h3>
-                  <p className="text-slate-500 text-sm line-clamp-3 mb-4 flex-1">
-                    รวมเทรนด์การออกแบบเว็บไซต์ที่กำลังมาแรงในปี 2025 เน้นความเร็ว, Accessibility และ Micro-interactions...
-                  </p>
-                  <div className="flex items-center text-[var(--color-primary-start)] font-medium text-sm group-hover:translate-x-2 transition-transform">
-                    อ่านต่อ <ArrowRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </Link>
-
-            {/* Post 3 */}
-            <Link href="/blog/seo-checklist-for-business" className="group">
-              <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-                <div className="aspect-[16/10] bg-slate-200 relative overflow-hidden">
-                  <Image
-                    src="/images/seo_checklist_retry_1770577845030.png"
-                    alt="SEO Checklist"
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded-full">Technology</span>
-                    <span className="text-xs text-slate-400 py-1">Jan 28, 2024</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[var(--color-primary-start)] transition-colors line-clamp-2">
-                    Checklist ทำ SEO สำหรับธุรกิจ SME: เริ่มต้นยังไงให้ติดหน้าแรก?
-                  </h3>
-                  <p className="text-slate-500 text-sm line-clamp-3 mb-4 flex-1">
-                    คู่มือทำ SEO ฉบับจับมือทำ สำหรับเจ้าของธุรกิจที่อยากเพิ่มยอดขายแบบ Organic โดยไม่ต้องพึ่งโฆษณาตลอดไป...
-                  </p>
-                  <div className="flex items-center text-[var(--color-primary-start)] font-medium text-sm group-hover:translate-x-2 transition-transform">
-                    อ่านต่อ <ArrowRight className="ml-1 w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </Link>
+          {/* Blog posts will be dynamically loaded here */}
+          <div className="text-center py-12 text-slate-400">
+            <p>กำลังโหลดบทความล่าสุด...</p>
           </div>
 
           <div className="mt-8 text-center md:hidden">
@@ -322,59 +208,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">เสียงตอบรับจากลูกค้า</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
-              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500" />
-                <div>
-                  <div className="font-bold text-slate-900">คุณ ธนกฤต</div>
-                  <div className="text-xs text-slate-500">กรรมการผู้จัดการ, บจก. สมาร์ท ดิจิตอล คอมเมิร์ซ</div>
-                </div>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                &quot;ตั้งแต่ใช้บริการยิงแอดกับ Best Solutions ยอดขายออนไลน์เพิ่มขึ้น 3 เท่าภายใน 2 เดือน ทีมงานวิเคราะห์ข้อมูลละเอียดและปรับกลยุทธ์ได้รวดเร็วมากครับ&quot;
-              </p>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
-              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-red-500" />
-                <div>
-                  <div className="font-bold text-slate-900">คุณ ปวีณา</div>
-                  <div className="text-xs text-slate-500">เจ้าของแบรนด์, Glowly Skincare</div>
-                </div>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                &quot;เว็บไซต์ที่ Best Solutions ทำให้สวยมากค่ะ ลูกค้าชมว่าใช้งานง่าย ยอดสั่งซื้อผ่านเว็บเพิ่มขึ้นเรื่อยๆ ชอบที่ทีมงานใส่ใจรายละเอียดทุกจุดเลยค่ะ&quot;
-              </p>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-100/50 hover:shadow-xl transition-shadow relative">
-              <div className="text-4xl text-[var(--color-primary-start)] opacity-30 font-serif absolute top-6 right-8">&quot;</div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-500" />
-                <div>
-                  <div className="font-bold text-slate-900">คุณ อนุชา</div>
-                  <div className="text-xs text-slate-500">ผู้อำนวยการฝ่ายการตลาด, โรงแรมริเวอร์วิว</div>
-                </div>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                &quot;SEO ที่ทำให้เว็บโรงแรมเราติดหน้าแรก Google ภายใน 3 เดือน จากเดิมที่แทบไม่มีคนเข้าเว็บ ตอนนี้ได้ลูกค้าจากออร์แกนิกเพิ่มขึ้นกว่า 200% ครับ&quot;
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* CTA Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

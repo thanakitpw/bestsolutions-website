@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { HowWeWork } from "@/components/HowWeWork";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Users, Target, Lightbulb, CheckCircle2, ArrowRight, Brain, Palette, Zap } from "lucide-react";
 
 export const metadata = {
@@ -93,155 +95,11 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Core Values (Specifics) */}
-            <section className="py-24 bg-slate-50 border-y border-slate-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-slate-900">สิ่งที่เรายึดมั่น (Our Core Values)</h2>
-                        <p className="text-slate-500 mt-4 max-w-xl mx-auto">มาตรฐานที่เราใช้ตัดสินใจในทุกๆ งาน</p>
-                    </div>
+            {/* How We Work */}
+            <HowWeWork />
 
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {/* Value 1 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-blue-600">
-                                <Target className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">No Guesstimates</h3>
-                            <p className="text-slate-600">
-                                เราไม่ใช้การคาดเดา ทุกการตัดสินใจต้องอ้างอิงจาก Data และสถิติที่ตรวจสอบได้จริง เพื่อลดความเสี่ยงให้ธุรกิจคุณ
-                            </p>
-                        </div>
-
-                        {/* Value 2 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-6 text-green-600">
-                                <CheckCircle2 className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">100% Ownership</h3>
-                            <p className="text-slate-600">
-                                คุณคือเจ้าของทุกทรัพย์สินทางดิจิทัล ทั้ง Code, Account โฆษณา และ Design Files ไม่มีสัญญาผูกมัดแอบแฝง
-                            </p>
-                        </div>
-
-                        {/* Value 3 */}
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6 text-purple-600">
-                                <Lightbulb className="w-6 h-6" />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">Solution First</h3>
-                            <p className="text-slate-600">
-                                เราไม่ขาย "เครื่องมือ" แต่ขาย "ทางออก" เราจะแนะนำเฉพาะสิ่งที่จำเป็นและแก้ปัญหาให้คุณได้จริงเท่านั้น
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Transparency Standards */}
-            <section className="py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col lg:flex-row items-center gap-12 rounded-3xl bg-slate-900 p-8 md:p-12 text-white shadow-2xl overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[var(--color-primary-start)] rounded-full blur-[200px] opacity-20 -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                        <div className="lg:w-1/2 relative z-10">
-                            <h2 className="text-3xl font-bold mb-6">ความโปร่งใสคือหัวใจสำคัญ</h2>
-                            <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                                สบายใจได้ทุกขั้นตอนการทำงาน ด้วยมาตรฐานการสื่อสารที่ชัดเจนและสม่ำเสมอ คุณจะไม่ต้องคอยตามงานอีกต่อไป
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/5">
-                                    <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
-                                    <span className="font-medium">Daily Updates</span>
-                                </div>
-                                <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/5">
-                                    <div className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]"></div>
-                                    <span className="font-medium">Weekly Sprint Reviews</span>
-                                </div>
-                                <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/5">
-                                    <div className="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.5)]"></div>
-                                    <span className="font-medium">Real-time Dashboard</span>
-                                </div>
-                                <div className="flex items-center gap-3 bg-white/10 p-4 rounded-lg backdrop-blur-sm border border-white/5">
-                                    <div className="w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></div>
-                                    <span className="font-medium">Direct Line to Founder</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="lg:w-1/2 relative z-10 w-full">
-                            {/* Mockup of a Dashboard or Report could go here, for now a stylized list of 'Deliverables' */}
-                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
-                                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                                    <span className="text-slate-300">Project Status</span>
-                                    <span className="text-green-400 font-mono text-xs px-2 py-1 bg-green-400/10 rounded">ON TRACK</span>
-                                </div>
-                                <div className="space-y-4">
-                                    <div className="space-y-2">
-                                        <div className="flex justify-between text-sm">
-                                            <span className="text-slate-400">Design Phase</span>
-                                            <span className="text-white">100%</span>
-                                        </div>
-                                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full bg-green-500 w-full"></div>
-                                        </div>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <div className="flex justify-between text-sm">
-                                            <span className="text-slate-400">Development</span>
-                                            <span className="text-white">80%</span>
-                                        </div>
-                                        <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full bg-blue-500 w-[80%]"></div>
-                                        </div>
-                                    </div>
-                                    <div className="pt-4 text-xs text-slate-500 text-center">
-                                        *ตัวอย่างรายงานความคืบหน้าที่คุณจะได้รับ
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* How We Scale (Replaced Team Placeholder) */}
-            <section className="py-24 bg-slate-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <span className="text-[var(--color-primary-start)] font-bold tracking-wider text-sm uppercase mb-2 block">OUR STRUCTURE</span>
-                        <h2 className="text-3xl font-bold text-slate-900">ทีมงานคุณภาพที่ปรับเปลี่ยนได้ตามโจทย์</h2>
-                        <p className="text-slate-500 mt-4 max-w-2xl mx-auto">
-                            เราใช้โมเดล <strong>"Core + Expert Network"</strong> ที่มีประสิทธิภาพสูง
-                            โดยมีทีม Strategist หลักช่วยวางแผน และดึงตัวผู้เชี่ยวชาญเฉพาะด้าน (Dev, Designer, Content)
-                            ที่ดีที่สุดในเครือข่ายมาร่วมโปรเจกต์ของคุณ
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        <div className="bg-white p-6 rounded-xl border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-16 h-16 bg-blue-50 rounded-full mx-auto mb-4 flex items-center justify-center text-blue-600">
-                                <Brain className="w-8 h-8" />
-                            </div>
-                            <h3 className="font-bold text-lg mb-2 text-slate-900">Lead Strategists</h3>
-                            <p className="text-sm text-slate-500">ดูแลทิศทาง กลยุทธ์ และควบคุมคุณภาพทุกขั้นตอน</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-16 h-16 bg-purple-50 rounded-full mx-auto mb-4 flex items-center justify-center text-purple-600">
-                                <Palette className="w-8 h-8" />
-                            </div>
-                            <h3 className="font-bold text-lg mb-2 text-slate-900">Specialist Network</h3>
-                            <p className="text-sm text-slate-500">กราฟิก, โปรแกรมเมอร์, และนักเขียน ที่คัดสรรมาเฉพาะงาน</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-16 h-16 bg-yellow-50 rounded-full mx-auto mb-4 flex items-center justify-center text-yellow-600">
-                                <Zap className="w-8 h-8" />
-                            </div>
-                            <h3 className="font-bold text-lg mb-2 text-slate-900">Agile Management</h3>
-                            <p className="text-sm text-slate-500">บริหารจัดการด้วยระบบ Agile รวดเร็ว ยืดหยุ่น ไม่เทอะทะ</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* Why Choose Us */}
+            <WhyChooseUs />
 
             <Footer />
         </main>

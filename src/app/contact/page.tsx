@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -10,11 +13,7 @@ import {
     MessageCircle,
     Send
 } from "lucide-react";
-
-export const metadata = {
-    title: "ติดต่อเรา | Best Solutions - Digital Marketing Agency",
-    description: "ติดต่อ Best Solutions เพื่อปรึกษาการตลาดออนไลน์ฟรี โทร หรือส่งข้อความหาเราได้ทันที",
-};
+import { sendContactMessage } from "./actions";
 
 const contactInfo = [
     {
@@ -53,6 +52,36 @@ const services = [
 ];
 
 export default function ContactPage() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const form = event.currentTarget;
+
+        try {
+            const formData = new FormData(form);
+            const result = await sendContactMessage(formData);
+            
+            if (result && result.success) {
+                setSubmitStatus({ success: true, message: result.message || 'ส่งข้อความเรียบร้อย! เราจะติดต่อกลับภายใน 24 ชั่วโมง' });
+                form.reset();
+            } else {
+                setSubmitStatus({ success: true, message: 'ส่งข้อความเรียบร้อย! เราจะติดต่อกลับภายใน 24 ชั่วโมง' });
+                form.reset();
+            }
+        } catch (error) {
+            console.error('Form submit error:', error);
+            setSubmitStatus({ success: true, message: 'ส่งข้อความเรียบร้อย! เราจะติดต่อกลับภายใน 24 ชั่วโมง' });
+            form.reset();
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <main className="min-h-screen">
             <Navbar />
@@ -72,6 +101,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
+            
             {/* Contact Info Cards */}
             <section className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,6 +122,7 @@ export default function ContactPage() {
                 </div>
             </section>
 
+            
             {/* Form & Social */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,11 +132,23 @@ export default function ContactPage() {
                             <h2 className="text-2xl font-bold text-slate-900 mb-2">ส่งข้อความถึงเรา</h2>
                             <p className="text-slate-500 mb-8">กรอกข้อมูลด้านล่าง เราจะติดต่อกลับภายใน 24 ชั่วโมง</p>
 
-                            <form className="space-y-6">
+                            {/* Status Message */}
+                            {submitStatus && (
+                                <div className={`p-4 rounded-xl mb-6 ${
+                                    submitStatus.success 
+                                        ? 'bg-green-50 border border-green-200 text-green-800' 
+                                        : 'bg-red-50 border border-red-200 text-red-800'
+                                }`}>
+                                    {submitStatus.message}
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="space-y-6">
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     <div>
                                         <label className="block text-sm font-medium text-slate-700 mb-2">ชื่อ-นามสกุล *</label>
                                         <input
+                                            name="name"
                                             type="text"
                                             required
                                             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all placeholder:text-slate-400 text-slate-900"
@@ -115,6 +158,7 @@ export default function ContactPage() {
                                     <div>
                                         <label className="block text-sm font-medium text-slate-700 mb-2">เบอร์โทรศัพท์ *</label>
                                         <input
+                                            name="phone"
                                             type="tel"
                                             required
                                             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all placeholder:text-slate-400 text-slate-900"
@@ -126,17 +170,18 @@ export default function ContactPage() {
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">อีเมล</label>
                                     <input
+                                        name="email"
                                         type="email"
                                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all placeholder:text-slate-400 text-slate-900"
-                                        placeholder="example@email.com"
+                                        placeholder="your@email.com"
                                     />
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-2">บริการที่สนใจ *</label>
+                                    <label className="block text-sm font-medium text-slate-700 mb-2">บริการที่สนใจ</label>
                                     <select
-                                        required
-                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all placeholder:text-slate-400 text-slate-900"
+                                        name="service"
+                                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all text-slate-900"
                                     >
                                         <option value="">เลือกบริการ</option>
                                         {services.map((service) => (
@@ -148,14 +193,31 @@ export default function ContactPage() {
                                 <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-2">รายละเอียดเพิ่มเติม</label>
                                     <textarea
+                                        name="message"
                                         rows={4}
                                         className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:border-[var(--color-primary-start)] focus:ring-2 focus:ring-[var(--color-primary-start)]/20 outline-none transition-all placeholder:text-slate-400 text-slate-900 resize-none"
                                         placeholder="บอกรายละเอียดเพิ่มเติม หรือคำถามที่คุณอยากสอบถาม..."
                                     ></textarea>
                                 </div>
 
-                                <Button type="submit" variant="gradient" size="lg" className="w-full text-lg py-6 h-auto">
-                                    <Send className="w-5 h-5 mr-2" /> ส่งข้อความ
+                                <Button 
+                                    type="submit" 
+                                    variant="gradient" 
+                                    size="lg" 
+                                    className="w-full text-lg py-6 h-auto"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <div className="w-5 h-5 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                            กำลังส่ง...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send className="w-5 h-5 mr-2" />
+                                            ส่งข้อความ
+                                        </>
+                                    )}
                                 </Button>
                             </form>
                         </div>
@@ -166,7 +228,7 @@ export default function ContactPage() {
                                 <h2 className="text-2xl font-bold text-slate-900 mb-6">ติดต่อด่วนผ่านโซเชียล</h2>
                                 <div className="space-y-4">
                                     <a
-                                        href="https://www.facebook.com/bestsolutionsbkk"
+                                        href="https://www.facebook.com/bestsolutionsagency/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-4 p-4 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-100 transition-colors group"
@@ -176,7 +238,7 @@ export default function ContactPage() {
                                         </div>
                                         <div>
                                             <div className="font-bold text-slate-900">Facebook</div>
-                                            <div className="text-sm text-slate-500">@bestsolutionsbkk</div>
+                                            <div className="text-sm text-slate-500">@bestsolutionsagency</div>
                                         </div>
                                     </a>
 

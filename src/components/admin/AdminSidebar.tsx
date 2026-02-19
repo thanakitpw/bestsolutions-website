@@ -11,6 +11,7 @@ import {
     ChevronRight,
     Settings,
     Upload,
+    Mail,
 } from "lucide-react";
 
 const navItems = [
@@ -35,6 +36,12 @@ const navItems = [
         label: "Portfolio",
         href: "/admin/portfolio",
         icon: Briefcase,
+    },
+    {
+        label: "Contacts",
+        href: "/admin/contacts",
+        icon: Mail,
+        exact: true,
     },
 ];
 

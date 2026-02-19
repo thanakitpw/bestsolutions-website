@@ -34,7 +34,7 @@ export function Footer() {
                         {/* Social */}
                         <div className="flex gap-3 mt-6">
                             <a
-                                href="https://www.facebook.com/bestsolutionsbkk"
+                                href="https://www.facebook.com/bestsolutionsagency/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
