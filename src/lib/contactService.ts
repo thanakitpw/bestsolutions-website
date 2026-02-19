@@ -83,6 +83,26 @@ export class ContactService {
     }
   }
 
+  // Delete contact
+  async delete(id: string): Promise<boolean> {
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .delete()
+        .eq('id', id);
+
+      if (error) {
+        console.error('Error deleting contact:', error);
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error deleting contact:', error);
+      return false;
+    }
+  }
+
   // Search contacts
   async search(query: string): Promise<ContactMessage[]> {
     try {

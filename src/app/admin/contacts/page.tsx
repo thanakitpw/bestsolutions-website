@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Mail, Phone, Calendar, Search, Filter, Download } from "lucide-react";
+import { ArrowLeft, Mail, Phone, Calendar, Search, Filter, Download, Trash, CheckSquare2, Square } from "lucide-react";
 import { contactService, type ContactMessage } from "@/lib/contactService";
 import { ContactStatsCards } from "@/components/admin/ContactStatsCards";
 
@@ -12,6 +12,7 @@ export default function ContactsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'new' | 'read' | 'replied'>('all');
   const [selectedContact, setSelectedContact] = useState<ContactMessage | null>(null);
+  const [selectedContacts, setSelectedContacts] = useState<string[]>([]);
 
   // Load contacts from database on mount
   useEffect(() => {
@@ -43,6 +44,58 @@ export default function ContactsPage() {
     const success = await contactService.updateStatus(id, newStatus);
     if (success) {
       refreshContacts();
+    }
+  };
+
+  // Delete contact
+  const deleteContact = async (id: string) => {
+    if (confirm('คุณแน่ใจว่าต้องการลบข้อมูลติดต่อนี้?')) {
+      const success = await contactService.delete(id);
+      if (success) {
+        refreshContacts();
+        if (selectedContact?.id === id) {
+          setSelectedContact(null);
+        }
+      }
+    }
+  };
+
+  // Toggle contact selection
+  const toggleContactSelection = (id: string) => {
+    setSelectedContacts(prev => 
+      prev.includes(id) 
+        ? prev.filter(contactId => contactId !== id)
+        : [...prev, id]
+    );
+  };
+
+  // Select all contacts
+  const selectAllContacts = () => {
+    if (selectedContacts.length === filteredContacts.length) {
+      setSelectedContacts([]);
+    } else {
+      setSelectedContacts(filteredContacts.map(contact => contact.id));
+    }
+  };
+
+  // Bulk delete contacts
+  const bulkDeleteContacts = async () => {
+    if (selectedContacts.length === 0) return;
+    
+    if (confirm(`คุณแน่ใจว่าต้องการลบข้อมูลติดต่อ ${selectedContacts.length} รายการ?`)) {
+      let successCount = 0;
+      for (const id of selectedContacts) {
+        const success = await contactService.delete(id);
+        if (success) successCount++;
+      }
+      
+      if (successCount > 0) {
+        refreshContacts();
+        setSelectedContacts([]);
+        if (selectedContact && selectedContacts.includes(selectedContact.id)) {
+          setSelectedContact(null);
+        }
+      }
     }
   };
 
@@ -96,7 +149,7 @@ export default function ContactsPage() {
                 placeholder="ค้นหาชื่อ, เบอร์โทร, อีเมล..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-slate-400"
               />
             </div>
             
@@ -115,12 +168,57 @@ export default function ContactsPage() {
           </div>
         </div>
 
+        {/* Bulk Actions */}
+        {filteredContacts.length > 0 && (
+          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={selectAllContacts}
+                className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 transition-colors"
+              >
+                {selectedContacts.length === filteredContacts.length ? (
+                  <CheckSquare2 className="w-4 h-4" />
+                ) : (
+                  <Square className="w-4 h-4" />
+                )}
+                {selectedContacts.length === filteredContacts.length ? 'ยกเลิกเลือกทั้งหมด' : 'เลือกทั้งหมด'}
+              </button>
+              {selectedContacts.length > 0 && (
+                <span className="text-sm text-slate-600">
+                  เลือกแล้ว {selectedContacts.length} รายการ
+                </span>
+              )}
+            </div>
+            {selectedContacts.length > 0 && (
+              <button
+                onClick={bulkDeleteContacts}
+                className="flex items-center gap-2 px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+              >
+                <Trash className="w-4 h-4" />
+                ลบ {selectedContacts.length} รายการ
+              </button>
+            )}
+          </div>
+        )}
+
         {/* Contacts List */}
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-200">
                 <tr>
+                  <th className="text-left p-4 font-medium text-slate-700 w-12">
+                    <button
+                      onClick={selectAllContacts}
+                      className="flex items-center justify-center"
+                    >
+                      {selectedContacts.length === filteredContacts.length ? (
+                        <CheckSquare2 className="w-4 h-4" />
+                      ) : (
+                        <Square className="w-4 h-4" />
+                      )}
+                    </button>
+                  </th>
                   <th className="text-left p-4 font-medium text-slate-700">ลูกค้า</th>
                   <th className="text-left p-4 font-medium text-slate-700">ติดต่อ</th>
                   <th className="text-left p-4 font-medium text-slate-700">บริการ</th>
@@ -132,6 +230,18 @@ export default function ContactsPage() {
               <tbody>
                 {filteredContacts.map((contact) => (
                   <tr key={contact.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td className="p-4">
+                      <button
+                        onClick={() => toggleContactSelection(contact.id)}
+                        className="flex items-center justify-center"
+                      >
+                        {selectedContacts.includes(contact.id) ? (
+                          <CheckSquare2 className="w-4 h-4 text-blue-600" />
+                        ) : (
+                          <Square className="w-4 h-4 text-slate-400" />
+                        )}
+                      </button>
+                    </td>
                     <td className="p-4">
                       <div>
                         <p className="font-medium text-slate-900">{contact.name}</p>
@@ -186,6 +296,12 @@ export default function ContactsPage() {
                             ตอบกลับแล้ว
                           </button>
                         )}
+                        <button
+                          onClick={() => deleteContact(contact.id)}
+                          className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                        >
+                          <Trash className="w-4 h-4" />
+                        </button>
                       </div>
                     </td>
                   </tr>
@@ -278,6 +394,16 @@ export default function ContactsPage() {
                         ทำเครื่องตอบกลับแล้ว
                       </button>
                     )}
+                    <button
+                      onClick={() => {
+                        deleteContact(selectedContact.id);
+                        setSelectedContact(null);
+                      }}
+                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                    >
+                      <Trash className="w-4 h-4 mr-2" />
+                      ลบ
+                    </button>
                     <button
                       onClick={() => setSelectedContact(null)}
                       className="px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors"
