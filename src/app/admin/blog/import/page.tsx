@@ -8,7 +8,7 @@ import {
     AlertCircle, Eye, EyeOff, Send, Save, ChevronDown, ChevronUp, Info
 } from "lucide-react";
 import { parseDocxFile, type ParsedDoc } from "./actions";
-import { createBlogPost } from "../actions";
+import { createBlogPost } from "../../actions";
 
 type Step = "upload" | "preview" | "done";
 
