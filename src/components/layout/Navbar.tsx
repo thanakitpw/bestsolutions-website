@@ -58,11 +58,11 @@ export function Navbar() {
                                 {link.label}
                             </Link>
                         ))}
-                        <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
+                        <Link href="/contact">
                             <Button variant="gradient" className="shadow-lg shadow-red-500/20">
                                 ติดต่อเรา
                             </Button>
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Hamburger button */}
@@ -94,11 +94,11 @@ export function Navbar() {
                             </Link>
                         ))}
                         <div className="pt-2 pb-1">
-                            <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+                            <Link href="/contact" onClick={closeMenu}>
                                 <Button variant="gradient" className="w-full shadow-lg shadow-red-500/20">
                                     ติดต่อเรา
                                 </Button>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
