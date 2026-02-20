@@ -1,232 +1,308 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Zap, Monitor, BarChart3, TrendingUp, Search, MessageCircle, RefreshCw, Layers, Users, Target, Camera, CloudLightning, Code, Paintbrush, Share2, Rocket, CheckCircle } from "lucide-react";
+import { ArrowRight, Monitor, TrendingUp, Search, Share2, FileText, CheckCircle, ChevronRight } from "lucide-react";
 
 export const metadata = {
     title: "บริการของเรา | Best Solutions - Digital Marketing Agency",
-    description: "เปลี่ยนปัญหาการตลาดให้เป็นยอดขาย ด้วยโซลูชั่นที่ตอบโจทย์ครบวงจร: รับทำเว็บไซต์ SEO ยิงแอด Facebook/Google และกราฟิกดีไซน์",
+    description: "รับทำเว็บไซต์ ยิงแอดโฆษณา ดูแลเพจโซเชียล รับทำ SEO และผลิตคอนเทนต์ ครบวงจรโดยทีมผู้เชี่ยวชาญ",
     alternates: { canonical: "https://www.bestsolutionscorp.com/services" },
     openGraph: {
         title: "บริการของเรา | Best Solutions",
-        description: "เปลี่ยนปัญหาการตลาดให้เป็นยอดขาย ด้วยโซลูชั่นที่ตอบโจทย์ครบวงจร",
+        description: "รับทำเว็บไซต์ ยิงแอดโฆษณา ดูแลเพจโซเชียล รับทำ SEO และผลิตคอนเทนต์",
         url: "https://www.bestsolutionscorp.com/services",
         images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Best Solutions - บริการ Digital Marketing" }],
     },
     twitter: {
         card: "summary_large_image",
         title: "บริการของเรา | Best Solutions",
-        description: "รับทำเว็บไซต์ SEO ยิงแอด Facebook/Google และกราฟิกดีไซน์",
+        description: "รับทำเว็บไซต์ ยิงแอดโฆษณา ดูแลเพจโซเชียล รับทำ SEO และผลิตคอนเทนต์",
         images: ["/og-default.jpg"],
     },
 };
 
-const pillars = [
+const services = [
     {
-        title: "BUILD",
-        subtitle: "สร้างรากฐานที่มั่นคง",
-        description: "เริ่มต้นธุรกิจด้วยภาพลักษณ์ที่ดี เว็บไซต์ที่น่าเชื่อถือ และระบบที่พร้อมรองรับการเติบโต",
-        color: "from-blue-600 to-indigo-600",
-        icon: Code,
-        services: [
-            {
-                title: "Modern Web Design & Dev",
-                slug: "web-design",
-                problem: "เว็บไซต์เก่า โหลดช้า ไม่รองรับมือถือ",
-                quote: "UX/UI ไม่ตอบโจทย์พฤติกรรมลูกค้าปัจจุบัน ทำให้เสียโอกาสการขาย",
-                features: ["Web Responsive", "Speed Optimization", "SEO Structure"],
-                icon: Monitor
-            },
-            {
-                title: "Corporate Identity & Branding",
-                slug: "branding",
-                problem: "แบรนด์ไม่เป็นที่จดจำ ดูไม่น่าเชื่อถือ",
-                quote: "ขาดอัตลักษณ์ (CI) ที่ชัดเจน ทำให้ลูกค้าไม่กล้าตัดสินใจซื้อ",
-                features: ["Logo Design", "Visual System", "Brand Tone"],
-                icon: Paintbrush
-            }
-        ]
+        id: "web-design",
+        label: "รับทำเว็บไซต์",
+        title: "รับทำเว็บไซต์",
+        subtitle: "Web Design & Development",
+        icon: Monitor,
+        gradient: "from-blue-500 to-indigo-600",
+        lightBg: "bg-blue-50",
+        lightBorder: "border-blue-100",
+        accentText: "text-blue-600",
+        accentBg: "bg-blue-600",
+        problem: "เว็บไซต์เก่า โหลดช้า ไม่รองรับมือถือ ทำให้เสียลูกค้าทุกวัน",
+        description: "ออกแบบและพัฒนาเว็บไซต์ที่สวยงาม ทันสมัย รองรับทุกอุปกรณ์ พร้อมโครงสร้าง SEO ที่ดีตั้งแต่ต้น",
+        features: [
+            "ออกแบบ UI/UX ที่ตอบโจทย์ลูกค้า",
+            "Responsive รองรับมือถือ 100%",
+            "โหลดเร็ว Core Web Vitals ผ่าน",
+            "โครงสร้าง SEO-friendly",
+            "ระบบ CMS แก้ไขเองได้",
+            "SSL & Security มาตรฐาน",
+        ],
+        results: ["เพิ่ม Conversion Rate 2-5 เท่า", "ลด Bounce Rate ลงอย่างน้อย 30%", "ติดอันดับ Google ได้เร็วขึ้น"],
     },
     {
-        title: "ATTRACT",
-        subtitle: "ดึงดูดลูกค้าคุณภาพ",
-        description: "เปลี่ยนคนแปลกหน้าให้เป็นคนรู้จัก ด้วยการตลาดที่แม่นยำและการค้นหาที่ตรงจุด",
-        color: "from-red-500 to-orange-500",
-        icon: Rocket,
-        services: [
-            {
-                title: "SEO & Content Marketing",
-                slug: "seo-content",
-                problem: "คนเข้าเว็บน้อย หาไม่จอบน Google",
-                quote: "เว็บไซต์ขาด Keyword Strategy ที่ถูกต้อง",
-                features: ["Keyword Research", "On-Page SEO", "Quality Backlinks"],
-                icon: Search
-            },
-            {
-                title: "Performance Ads",
-                slug: "ads",
-                problem: "ยิงแอดไปเยอะ แต่ยอดขายไม่คุ้มทุน",
-                quote: "Target ผิดกลุ่ม หรือ Creative ไม่ดึงดูดใจมากพอ",
-                features: ["Audience Targeting", "A/B Testing", "ROI Focus"],
-                icon: TrendingUp
-            }
-        ]
+        id: "ads",
+        label: "ยิงแอดโฆษณา",
+        title: "ยิงแอดโฆษณา",
+        subtitle: "Facebook & Google Ads",
+        icon: TrendingUp,
+        gradient: "from-[#F51036] to-orange-500",
+        lightBg: "bg-red-50",
+        lightBorder: "border-red-100",
+        accentText: "text-[#F51036]",
+        accentBg: "bg-[#F51036]",
+        problem: "ยิงแอดไปเยอะ แต่ยอดขายไม่คุ้มทุน งบหายไปโดยไม่รู้สาเหตุ",
+        description: "บริหารโฆษณา Facebook และ Google Ads อย่างมืออาชีพ เน้น ROI วัดผลได้จริง ไม่เผาเงินเปล่า",
+        features: [
+            "วิเคราะห์กลุ่มเป้าหมายแม่นยำ",
+            "ออกแบบ Creative ที่ดึงดูดใจ",
+            "A/B Testing ทุก Ad Set",
+            "Retargeting เพิ่มโอกาสปิดการขาย",
+            "รายงานผลรายสัปดาห์",
+            "ปรับ Budget ให้คุ้มค่าสูงสุด",
+        ],
+        results: ["ROAS เฉลี่ย 3-8 เท่า", "ลด Cost per Lead ลง 40%", "เพิ่มยอดขายจาก Ads ได้จริง"],
     },
     {
-        title: "CONVERT",
-        subtitle: "เปลี่ยนความสนใจเป็นยอดขาย",
-        description: "สร้างความสัมพันธ์ระยะยาวและกระตุ้นให้เกิดการตัดสินใจซื้อด้วยคอนเทนต์ที่โดนใจ",
-        color: "from-green-500 to-emerald-600",
-        icon: CloudLightning,
-        services: [
-            {
-                title: "Social Media Management",
-                slug: "social-media",
-                problem: "ลูกค้าทักมาแต่ปิดการขายไม่ได้",
-                quote: "ขาด Social Proof หรือ Content ขาดความน่าเชื่อถือ",
-                features: ["Engaging Content", "Admin Response", "Community Building"],
-                icon: Share2
-            },
-            {
-                title: "Production & Photography",
-                slug: "production",
-                problem: "สินค้าดี แต่ภาพถ่ายไม่สวย",
-                quote: "First Impression สำคัญที่สุด รูปภาพที่ไม่สวยลดมูลค่าสินค้า",
-                features: ["Product Shooting", "Short-Form Video", "Motion Graphics"],
-                icon: Camera
-            }
-        ]
-    }
+        id: "social-media",
+        label: "ดูแลเพจโซเชียล",
+        title: "ดูแลเพจโซเชียล",
+        subtitle: "Social Media Management",
+        icon: Share2,
+        gradient: "from-purple-500 to-pink-500",
+        lightBg: "bg-purple-50",
+        lightBorder: "border-purple-100",
+        accentText: "text-purple-600",
+        accentBg: "bg-purple-600",
+        problem: "เพจไม่มีคนติดตาม โพสต์ไม่มีคนเห็น ลูกค้าทักมาแต่ตอบไม่ทัน",
+        description: "ดูแลเพจ Facebook, Instagram, TikTok ครบวงจร ตั้งแต่วางแผนคอนเทนต์ โพสต์ ไปจนถึงตอบคอมเมนต์",
+        features: [
+            "วางแผน Content Calendar รายเดือน",
+            "ออกแบบกราฟิกและเขียน Caption",
+            "โพสต์ตรงเวลาสม่ำเสมอ",
+            "ตอบ Comment & Inbox รวดเร็ว",
+            "วิเคราะห์ Insight รายเดือน",
+            "ดูแลทั้ง Facebook, IG, TikTok",
+        ],
+        results: ["เพิ่ม Follower 500-2,000+/เดือน", "Engagement Rate สูงกว่าค่าเฉลี่ย", "สร้าง Brand Awareness ต่อเนื่อง"],
+    },
+    {
+        id: "seo",
+        label: "รับทำ SEO",
+        title: "รับทำ SEO",
+        subtitle: "Search Engine Optimization",
+        icon: Search,
+        gradient: "from-emerald-500 to-teal-600",
+        lightBg: "bg-emerald-50",
+        lightBorder: "border-emerald-100",
+        accentText: "text-emerald-600",
+        accentBg: "bg-emerald-600",
+        problem: "เว็บไซต์ติดหน้า 5-10 ของ Google ลูกค้าหาไม่เจอ ต้องพึ่งแอดตลอด",
+        description: "ทำ SEO อย่างถูกต้องตามมาตรฐาน Google เน้น Keyword ที่ลูกค้าค้นหาจริง ให้ติดอันดับอย่างยั่งยืน",
+        features: [
+            "Keyword Research เชิงลึก",
+            "On-Page SEO ทุกหน้า",
+            "Technical SEO & Site Speed",
+            "สร้าง Backlink คุณภาพสูง",
+            "เขียน Content ที่ Google ชอบ",
+            "ติดตามอันดับรายสัปดาห์",
+        ],
+        results: ["ติดหน้า 1 Google ภายใน 3-6 เดือน", "Traffic Organic เพิ่ม 200-500%", "ลดการพึ่งพาโฆษณาระยะยาว"],
+    },
+    {
+        id: "content",
+        label: "ผลิตคอนเทนต์",
+        title: "ผลิตคอนเทนต์",
+        subtitle: "Content Production",
+        icon: FileText,
+        gradient: "from-amber-500 to-orange-500",
+        lightBg: "bg-amber-50",
+        lightBorder: "border-amber-100",
+        accentText: "text-amber-600",
+        accentBg: "bg-amber-600",
+        problem: "ไม่มีเวลาทำคอนเทนต์ รูปภาพไม่สวย วิดีโอไม่น่าดู ทำให้แบรนด์ดูไม่น่าเชื่อถือ",
+        description: "ผลิตคอนเทนต์ครบทุกรูปแบบ ทั้งบทความ กราฟิก ภาพถ่ายสินค้า และวิดีโอ Short-form ที่ดึงดูดใจ",
+        features: [
+            "เขียนบทความ SEO คุณภาพสูง",
+            "ออกแบบกราฟิก Infographic",
+            "ถ่ายภาพสินค้า Product Photo",
+            "ตัดต่อวิดีโอ Reels/TikTok",
+            "Motion Graphics & Animation",
+            "Script เขียน Copy โฆษณา",
+        ],
+        results: ["คอนเทนต์ที่ Viral ได้จริง", "ภาพสินค้าเพิ่มยอดขาย 30%+", "สร้าง Brand Identity ที่แข็งแกร่ง"],
+    },
 ];
 
 export default function ServicesPage() {
     return (
-        <main className="min-h-screen bg-slate-50">
+        <main className="min-h-screen bg-white">
             <Navbar />
 
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-24 overflow-hidden bg-[#0B0F19] rounded-b-[3rem] shadow-xl">
-                {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+            {/* ── Hero ── */}
+            <section className="relative pt-32 pb-28 overflow-hidden bg-[#0B0F19]">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:32px_32px]" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#F51036]/20 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#25137A]/30 rounded-full blur-[100px] pointer-events-none" />
 
-                {/* Radial Gradient for depth */}
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 -z-10 h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]"></div>
-                <div className="absolute right-0 bottom-0 -z-10 h-[310px] w-[310px] rounded-full bg-purple-500/20 blur-[100px] animate-blob"></div>
-                <div className="absolute left-0 bottom-1/4 -z-10 h-[310px] w-[310px] rounded-full bg-indigo-500/20 blur-[100px] animate-blob animation-delay-2000"></div>
-
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-blue-300 text-sm font-medium mb-8 backdrop-blur-sm hover:bg-white/10 transition-colors cursor-default">
+                <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#F51036] text-sm font-semibold mb-8 backdrop-blur-sm">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F51036] opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F51036]" />
                         </span>
-                        SOLUTIONS, NOT JUST SERVICES
+                        บริการของเรา
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-                        เราไม่ได้แค่รับทำ <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
-                            แต่เราช่วยแก้ปัญหาธุรกิจ
+                    <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+                        ครบทุกบริการ<br className="hidden md:block" />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F51036] via-orange-400 to-amber-400">
+                            ที่ธุรกิจของคุณต้องการ
                         </span>
                     </h1>
 
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-                        เปลี่ยนความยุ่งยากของการตลาดออนไลน์ ให้เป็นระบบที่สร้างยอดขายได้จริง <br className="hidden md:block" />
-                        ด้วยทีมงานมืออาชีพที่เข้าใจธุรกิจของคุณ
+                    <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                        เราดูแลการตลาดออนไลน์ครบวงจร ตั้งแต่สร้างเว็บไซต์ ยิงแอด ดูแลโซเชียล ทำ SEO ไปจนถึงผลิตคอนเทนต์
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-lg">
-                            ปรึกษาผู้เชี่ยวชาญฟรี
-                        </Button>
-                        <Button variant="outline" size="lg" className="border-slate-700 text-slate-300 hover:bg-white/5 hover:text-white rounded-full px-8 h-14 text-lg backdrop-blur-sm bg-white/5">
-                            ดูบริการทั้งหมด
-                        </Button>
+                    {/* Service quick nav */}
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {services.map((s) => (
+                            <a
+                                key={s.id}
+                                href={`#${s.id}`}
+                                className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 hover:text-white text-sm font-medium transition-all"
+                            >
+                                <s.icon className="w-4 h-4" />
+                                {s.label}
+                            </a>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* Pillars Section */}
-            <section className="pt-20 pb-24 relative z-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
-                    {pillars.map((pillar, index) => (
-                        <div key={index} id={pillar.title.toLowerCase()} className="scroll-mt-24">
-                            <div className="flex items-center gap-4 mb-8">
-                                <div className={`p-3 rounded-2xl bg-gradient-to-br ${pillar.color} text-white shadow-lg`}>
-                                    <pillar.icon className="w-8 h-8" />
-                                </div>
-                                <div>
-                                    <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                                        {pillar.title} <span className="text-slate-400 font-normal text-lg">/ {pillar.subtitle}</span>
-                                    </h2>
-                                    <p className="text-slate-500">{pillar.description}</p>
-                                </div>
-                            </div>
+            {/* ── Services ── */}
+            <div className="divide-y divide-slate-100">
+                {services.map((service, index) => {
+                    const isEven = index % 2 === 0;
+                    return (
+                        <section
+                            key={service.id}
+                            id={service.id}
+                            className="scroll-mt-20 py-20 md:py-28"
+                        >
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className={`grid lg:grid-cols-2 gap-16 items-center ${isEven ? "" : "lg:grid-flow-dense"}`}>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {pillar.services.map((service, i) => (
-                                    <Link key={i} href={`/services/${service.slug}`} className="group relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:border-blue-100 flex flex-col h-full">
-                                        <div className={`absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b ${pillar.color} rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity`} />
-
-                                        <div className="mb-6 bg-red-50 rounded-xl p-4 border border-red-100">
-                                            <div className="flex items-center gap-2 text-red-500 font-bold text-xs mb-1 uppercase tracking-wider">
-                                                <CloudLightning className="w-3 h-3" /> PROBLEM (อาการที่เจอ)
+                                    {/* Text side */}
+                                    <div className={isEven ? "" : "lg:col-start-2"}>
+                                        {/* Number + label */}
+                                        <div className="flex items-center gap-3 mb-6">
+                                            <span className={`text-5xl font-black bg-gradient-to-br ${service.gradient} bg-clip-text text-transparent opacity-30 leading-none`}>
+                                                0{index + 1}
+                                            </span>
+                                            <div>
+                                                <span className={`text-xs font-bold uppercase tracking-widest ${service.accentText}`}>
+                                                    {service.subtitle}
+                                                </span>
+                                                <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight">
+                                                    {service.title}
+                                                </h2>
                                             </div>
-                                            <p className="text-slate-900 font-semibold text-lg leading-tight">
-                                                {service.problem}
-                                            </p>
                                         </div>
 
-                                        <blockquote className="mb-8 text-slate-500 italic text-sm border-l-2 border-slate-200 pl-4">
-                                            "{service.quote}"
-                                        </blockquote>
+                                        {/* Problem badge */}
+                                        <div className={`inline-flex items-start gap-3 ${service.lightBg} border ${service.lightBorder} rounded-2xl px-5 py-4 mb-6 w-full`}>
+                                            <span className="text-lg mt-0.5">⚡</span>
+                                            <div>
+                                                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">ปัญหาที่ลูกค้ามักเจอ</p>
+                                                <p className={`font-semibold ${service.accentText} leading-snug`}>{service.problem}</p>
+                                            </div>
+                                        </div>
 
-                                        <div className="mt-auto">
-                                            <div className="flex items-center gap-3 mb-6">
-                                                <div className={`p-2 rounded-lg bg-slate-50 group-hover:bg-white group-hover:shadow-md transition-all`}>
-                                                    <service.icon className="w-6 h-6 text-slate-700" />
+                                        <p className="text-slate-600 leading-relaxed mb-8 text-[1.05rem]">
+                                            {service.description}
+                                        </p>
+
+                                        {/* Features grid */}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                                            {service.features.map((f) => (
+                                                <div key={f} className="flex items-center gap-2.5 text-slate-700 text-sm">
+                                                    <CheckCircle className={`w-4 h-4 shrink-0 ${service.accentText}`} />
+                                                    {f}
                                                 </div>
-                                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                                                    {service.title}
-                                                </h3>
+                                            ))}
+                                        </div>
+
+                                        <a
+                                            href="https://lin.ee/IlvhwZV"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm bg-gradient-to-r ${service.gradient} shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all`}
+                                        >
+                                            ปรึกษาบริการนี้ฟรี <ArrowRight className="w-4 h-4" />
+                                        </a>
+                                    </div>
+
+                                    {/* Visual side */}
+                                    <div className={isEven ? "" : "lg:col-start-1 lg:row-start-1"}>
+                                        <div className={`relative rounded-3xl overflow-hidden bg-gradient-to-br ${service.gradient} p-8 md:p-10 shadow-2xl`}>
+                                            {/* Decorative circles */}
+                                            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                                            <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+                                            {/* Icon */}
+                                            <div className="relative z-10 mb-8">
+                                                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center">
+                                                    <service.icon className="w-8 h-8 text-white" />
+                                                </div>
                                             </div>
 
-                                            <div className="space-y-3 mb-8">
-                                                {service.features.map((feature, j) => (
-                                                    <div key={j} className="flex items-center gap-2 text-slate-600 text-sm">
-                                                        <CheckCircle className="w-4 h-4 text-green-500" />
-                                                        {feature}
+                                            {/* Results */}
+                                            <div className="relative z-10 space-y-3">
+                                                <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-4">ผลลัพธ์ที่คาดหวัง</p>
+                                                {service.results.map((r, i) => (
+                                                    <div key={i} className="flex items-center gap-3 bg-white/15 backdrop-blur rounded-xl px-4 py-3">
+                                                        <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                                                            <ChevronRight className="w-3.5 h-3.5 text-white" />
+                                                        </span>
+                                                        <span className="text-white font-semibold text-sm">{r}</span>
                                                     </div>
                                                 ))}
                                             </div>
-
-                                            <div className="flex items-center justify-end text-slate-400 text-sm font-medium group-hover:text-blue-600 transition-colors">
-                                                ดูรายละเอียด <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                                            </div>
                                         </div>
-                                    </Link>
-                                ))}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
+                        </section>
+                    );
+                })}
+            </div>
 
-            {/* CTA Section */}
-            <section className="py-24 bg-gradient-to-r from-[var(--color-primary-start)] to-[var(--color-primary-end)]">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        ไม่แน่ใจว่าธุรกิจของคุณป่วยตรงไหน?
-                    </h2>
-                    <p className="text-xl text-white/80 mb-10">
-                        ให้เราช่วยวิเคราะห์อาการฟรี ไม่มีค่าใช้จ่าย รับคำปรึกษาเบื้องต้นได้ทันที
-                    </p>
-                    <a href="https://lin.ee/IlvhwZV" target="_blank" rel="noopener noreferrer">
-                        <Button size="lg" className="bg-white text-[var(--color-primary-start)] hover:bg-slate-100 text-lg px-10 py-6 h-auto shadow-xl">
-                            ขอรับคำปรึกษาฟรี <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                    </a>
+            {/* ── CTA ── */}
+            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+                <div className="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden bg-gradient-to-r from-[#25137A] to-[#F51036] px-8 py-16 md:px-16 text-center relative">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
+                    <div className="relative z-10">
+                        <p className="text-white/60 text-sm font-bold uppercase tracking-widest mb-3">ไม่แน่ใจว่าต้องการบริการไหน?</p>
+                        <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                            ปรึกษาเราฟรี เราจะแนะนำ<br className="hidden md:block" />บริการที่เหมาะกับธุรกิจคุณ
+                        </h2>
+                        <p className="text-white/70 mb-10 text-lg">ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด ได้คำแนะนำจากผู้เชี่ยวชาญทันที</p>
+                        <a
+                            href="https://lin.ee/IlvhwZV"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-white text-[#F51036] font-bold px-10 py-4 rounded-full hover:bg-slate-50 transition-colors shadow-xl text-lg"
+                        >
+                            ปรึกษาฟรีผ่าน LINE <ArrowRight className="w-5 h-5" />
+                        </a>
+                    </div>
                 </div>
             </section>
 

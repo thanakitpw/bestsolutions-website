@@ -11,11 +11,11 @@ const menuLinks = [
 ];
 
 const serviceLinks = [
-    { label: "รับทำเว็บไซต์", href: "/services" },
-    { label: "ยิงแอดโฆษณา", href: "/services" },
-    { label: "ดูแลเพจโซเชียล", href: "/services" },
-    { label: "รับทำ SEO", href: "/services" },
-    { label: "ผลิตคอนเทนต์", href: "/services" },
+    { label: "รับทำเว็บไซต์", href: "/services#web-design" },
+    { label: "ยิงแอดโฆษณา", href: "/services#ads" },
+    { label: "ดูแลเพจโซเชียล", href: "/services#social-media" },
+    { label: "รับทำ SEO", href: "/services#seo" },
+    { label: "ผลิตคอนเทนต์", href: "/services#content" },
 ];
 
 export function Footer() {
