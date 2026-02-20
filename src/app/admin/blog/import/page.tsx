@@ -1,19 +1,39 @@
 "use client";
 
 import { useState, useRef, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
     ArrowLeft, Upload, FileText, Loader2, CheckCircle2,
-    AlertCircle, Eye, EyeOff, Send, Save, ChevronDown, ChevronUp, Info
+    AlertCircle, Eye, EyeOff, Send, Save, ChevronDown, ChevronUp, Info, X, Plus
 } from "lucide-react";
 import { parseDocxFile, type ParsedDoc } from "./actions";
 import { createBlogPost } from "../../actions";
+import ImageUploader from "./ImageUploader";
 
 type Step = "upload" | "preview" | "done";
 
+const CATEGORIES = [
+    "SEO",
+    "Digital Marketing",
+    "Social Media",
+    "Content Marketing",
+    "Google Ads",
+    "Facebook Ads",
+    "Email Marketing",
+    "Web Design",
+    "E-Commerce",
+    "Branding",
+    "Analytics",
+    "อื่นๆ",
+];
+
+const SUGGESTED_TAGS = [
+    "seo", "marketing", "digital", "online", "social-media", "facebook",
+    "google", "content", "ads", "branding", "website", "ecommerce",
+    "strategy", "tips", "beginner", "business", "analytics", "email",
+];
+
 export default function ImportDocxPage() {
-    const router = useRouter();
     const [isParsing, startParsing] = useTransition();
     const [isSaving, startSaving] = useTransition();
     const fileRef = useRef<HTMLInputElement>(null);
@@ -32,9 +52,20 @@ export default function ImportDocxPage() {
     const [excerpt, setExcerpt] = useState("");
     const [content, setContent] = useState("");
     const [category, setCategory] = useState("");
-    const [tags, setTags] = useState("");
+    const [tagList, setTagList] = useState<string[]>([]);
+    const [tagInput, setTagInput] = useState("");
     const [seoTitle, setSeoTitle] = useState("");
     const [seoDesc, setSeoDesc] = useState("");
+    const [coverImage, setCoverImage] = useState("");
+
+    function addTag(tag: string) {
+        const t = tag.trim().toLowerCase().replace(/,/g, "");
+        if (t && !tagList.includes(t)) setTagList(prev => [...prev, t]);
+        setTagInput("");
+    }
+    function removeTag(tag: string) {
+        setTagList(prev => prev.filter(t => t !== tag));
+    }
 
     function handleFile(file: File) {
         if (!file.name.endsWith(".docx")) {
@@ -60,9 +91,9 @@ export default function ImportDocxPage() {
             setExcerpt(d.excerpt);
             setContent(d.content);
             setCategory(d.category);
-            setTags(d.tags.join(", "));
-            setSeoTitle(d.seoTitle);
-            setSeoDesc(d.seoDescription);
+            setTagList(d.tags);
+            setSeoTitle(d.seoTitle.replace(/\*/g, "").trim());
+            setSeoDesc(d.seoDescription.replace(/\*/g, "").trim());
             setStep("preview");
         });
     }
@@ -87,10 +118,10 @@ export default function ImportDocxPage() {
         formData.set("excerpt", excerpt);
         formData.set("content", content);
         formData.set("category", category);
-        formData.set("tags", tags);
+        formData.set("tags", tagList.join(", "));
         formData.set("seo_title", seoTitle);
         formData.set("seo_description", seoDesc);
-        formData.set("cover_image", "");
+        formData.set("cover_image", coverImage);
         formData.set("author_name", "Best Solutions Corp");
         formData.set("publish", publish ? "true" : "false");
 
@@ -215,8 +246,8 @@ export default function ImportDocxPage() {
                     <div className="grid grid-cols-3 gap-5">
                         {/* Main fields */}
                         <div className="col-span-2 space-y-5">
-                            <div className="bg-white/5 border border-white/8 rounded-2xl p-6 space-y-4">
-                                <h2 className="font-semibold text-white border-b border-white/8 pb-3">เนื้อหา</h2>
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">เนื้อหา</h2>
                                 <div>
                                     <label className={labelCls}>ชื่อบทความ *</label>
                                     <input value={title} onChange={e => setTitle(e.target.value)} className={inputCls} placeholder="ชื่อบทความ" />
@@ -229,8 +260,8 @@ export default function ImportDocxPage() {
                                     </div>
                                 </div>
                                 <div>
-                                    <label className={labelCls}>Excerpt (auto-generated)</label>
-                                    <textarea value={excerpt} onChange={e => setExcerpt(e.target.value)} rows={3} className={`${inputCls} resize-none`} />
+                                    <label className={labelCls}>Excerpt <span className="normal-case font-normal text-slate-600">(จาก Key Takeaways)</span></label>
+                                    <textarea value={excerpt} onChange={e => setExcerpt(e.target.value)} rows={4} className={`${inputCls} resize-none`} />
                                 </div>
                                 <div>
                                     <div className="flex items-center justify-between mb-1.5">
@@ -238,44 +269,83 @@ export default function ImportDocxPage() {
                                         <button
                                             type="button"
                                             onClick={() => setShowRawHtml(!showRawHtml)}
-                                            className="flex items-center gap-1 text-xs text-slate-500 hover:text-white transition-colors"
+                                            className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors border border-white/10"
                                         >
                                             {showRawHtml ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
-                                            {showRawHtml ? "ซ่อน preview" : "ดู preview"}
+                                            {showRawHtml ? "แก้ไข HTML" : "ดู Preview"}
                                         </button>
                                     </div>
-                                    <textarea
-                                        value={content}
-                                        onChange={e => setContent(e.target.value)}
-                                        rows={18}
-                                        className={`${inputCls} resize-y font-mono text-xs`}
-                                    />
-                                    {showRawHtml && (
-                                        <div
-                                            className="mt-3 bg-white rounded-xl p-6 prose prose-sm max-w-none text-slate-900"
-                                            dangerouslySetInnerHTML={{ __html: content }}
+                                    {showRawHtml ? (
+                                        <div className="rounded-2xl overflow-hidden border border-white/10">
+                                            <div className="bg-white/5 px-4 py-2 text-xs text-slate-500 border-b border-white/10 flex items-center gap-2">
+                                                <Eye className="w-3 h-3" /> Preview บทความ
+                                            </div>
+                                            <div
+                                                className="bg-white p-6 text-slate-900 text-sm leading-relaxed"
+                                                dangerouslySetInnerHTML={{ __html: content
+                                                    .replace(/<h2/g, '<h2 style="font-size:1.35rem;font-weight:700;margin:1.75rem 0 0.75rem;color:#1e293b;border-left:4px solid #3b82f6;padding-left:12px;line-height:1.3"')
+                                                    .replace(/<h3/g, '<h3 style="font-size:1.1rem;font-weight:600;margin:1.25rem 0 0.5rem;color:#334155;padding-left:4px"')
+                                                    .replace(/<h4/g, '<h4 style="font-size:1rem;font-weight:600;margin:1rem 0 0.4rem;color:#475569"')
+                                                    .replace(/<p/g, '<p style="margin:0.75rem 0;line-height:1.8;color:#374151"')
+                                                    .replace(/<ul/g, '<ul style="margin:0.75rem 0;padding-left:1.5rem;list-style:disc;color:#374151"')
+                                                    .replace(/<ol/g, '<ol style="margin:0.75rem 0;padding-left:1.5rem;list-style:decimal;color:#374151"')
+                                                    .replace(/<li/g, '<li style="margin:0.35rem 0"')
+                                                    .replace(/<strong/g, '<strong style="font-weight:700;color:#1e293b"')
+                                                    .replace(/<blockquote/g, '<blockquote style="border-left:4px solid #e2e8f0;padding:0.5rem 1rem;margin:1rem 0;color:#64748b;font-style:italic;background:#f8fafc;border-radius:0 8px 8px 0"')
+                                                }}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <textarea
+                                            value={content}
+                                            onChange={e => setContent(e.target.value)}
+                                            rows={18}
+                                            className={`${inputCls} resize-y font-mono text-xs`}
                                         />
                                     )}
                                 </div>
                             </div>
 
-                            <div className="bg-white/5 border border-white/8 rounded-2xl p-6 space-y-4">
-                                <h2 className="font-semibold text-white border-b border-white/8 pb-3">SEO</h2>
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-4">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">SEO</h2>
                                 <div>
                                     <label className={labelCls}>SEO Title</label>
-                                    <input value={seoTitle} onChange={e => setSeoTitle(e.target.value)} className={inputCls} placeholder="ถ้าว่างจะใช้ชื่อบทความ" />
+                                    <input
+                                        value={seoTitle}
+                                        onChange={e => setSeoTitle(e.target.value.replace(/\*/g, ""))}
+                                        className={inputCls}
+                                        placeholder="ถ้าว่างจะใช้ชื่อบทความ"
+                                    />
+                                    <p className={`text-xs mt-1 ${seoTitle.length > 60 ? "text-amber-400" : "text-slate-600"}`}>
+                                        {seoTitle.length}/60 ตัวอักษร
+                                    </p>
                                 </div>
                                 <div>
                                     <label className={labelCls}>SEO Description</label>
-                                    <textarea value={seoDesc} onChange={e => setSeoDesc(e.target.value)} rows={3} className={`${inputCls} resize-none`} placeholder="150-160 ตัวอักษร" />
+                                    <textarea
+                                        value={seoDesc}
+                                        onChange={e => setSeoDesc(e.target.value.replace(/\*/g, ""))}
+                                        rows={3}
+                                        className={`${inputCls} resize-none`}
+                                        placeholder="150-160 ตัวอักษร"
+                                    />
+                                    <p className={`text-xs mt-1 ${seoDesc.length > 160 ? "text-red-400" : seoDesc.length >= 140 ? "text-emerald-400" : "text-slate-600"}`}>
+                                        {seoDesc.length}/160 ตัวอักษร
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Sidebar */}
                         <div className="space-y-5">
-                            <div className="bg-white/5 border border-white/8 rounded-2xl p-5 space-y-4">
-                                <h2 className="font-semibold text-white border-b border-white/8 pb-3">เผยแพร่</h2>
+                            {/* Cover Image */}
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">รูปภาพหน้าปก</h2>
+                                <ImageUploader value={coverImage} onChange={setCoverImage} />
+                            </div>
+
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">เผยแพร่</h2>
                                 {saveError && (
                                     <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 text-xs text-red-400">{saveError}</div>
                                 )}
@@ -297,21 +367,78 @@ export default function ImportDocxPage() {
                                 </button>
                             </div>
 
-                            <div className="bg-white/5 border border-white/8 rounded-2xl p-5 space-y-4">
-                                <h2 className="font-semibold text-white border-b border-white/8 pb-3">ข้อมูลเพิ่มเติม</h2>
+                            {/* Category & Tags */}
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-4">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">จัดหมวดหมู่</h2>
+
+                                {/* Category dropdown */}
                                 <div>
                                     <label className={labelCls}>หมวดหมู่</label>
-                                    <input value={category} onChange={e => setCategory(e.target.value)} className={inputCls} placeholder="SEO, Marketing..." />
+                                    <div className="relative">
+                                        <select
+                                            value={category}
+                                            onChange={e => setCategory(e.target.value)}
+                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-sm appearance-none cursor-pointer"
+                                        >
+                                            <option value="" className="bg-slate-900">-- เลือกหมวดหมู่ --</option>
+                                            {CATEGORIES.map(c => (
+                                                <option key={c} value={c} className="bg-slate-900">{c}</option>
+                                            ))}
+                                        </select>
+                                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 pointer-events-none" />
+                                    </div>
                                 </div>
+
+                                {/* Tags */}
                                 <div>
-                                    <label className={labelCls}>Tags <span className="text-slate-600 normal-case font-normal">คั่นด้วย comma</span></label>
-                                    <input value={tags} onChange={e => setTags(e.target.value)} className={inputCls} placeholder="seo, marketing" />
+                                    <label className={labelCls}>Tags</label>
+                                    {tagList.length > 0 && (
+                                        <div className="flex flex-wrap gap-1.5 mb-2">
+                                            {tagList.map(tag => (
+                                                <span key={tag} className="flex items-center gap-1 bg-blue-500/15 border border-blue-500/30 text-blue-300 text-xs px-2.5 py-1 rounded-full">
+                                                    {tag}
+                                                    <button onClick={() => removeTag(tag)} className="hover:text-white transition-colors">
+                                                        <X className="w-3 h-3" />
+                                                    </button>
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
+                                    <div className="flex gap-2">
+                                        <input
+                                            value={tagInput}
+                                            onChange={e => setTagInput(e.target.value)}
+                                            onKeyDown={e => { if (e.key === "Enter" || e.key === ",") { e.preventDefault(); addTag(tagInput); } }}
+                                            className={`${inputCls} flex-1`}
+                                            placeholder="พิมพ์แล้วกด Enter"
+                                        />
+                                        <button
+                                            onClick={() => addTag(tagInput)}
+                                            className="px-3 py-2 bg-white/10 hover:bg-white/15 rounded-xl border border-white/10 text-white transition-colors"
+                                        >
+                                            <Plus className="w-4 h-4" />
+                                        </button>
+                                    </div>
+                                    <div className="mt-2">
+                                        <p className="text-xs text-slate-600 mb-1.5">แนะนำ:</p>
+                                        <div className="flex flex-wrap gap-1">
+                                            {SUGGESTED_TAGS.filter(t => !tagList.includes(t)).slice(0, 10).map(tag => (
+                                                <button
+                                                    key={tag}
+                                                    onClick={() => addTag(tag)}
+                                                    className="text-xs px-2 py-0.5 rounded-full bg-white/5 hover:bg-white/10 text-slate-500 hover:text-white border border-white/10 transition-colors"
+                                                >
+                                                    + {tag}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Parse stats */}
-                            <div className="bg-white/5 border border-white/8 rounded-2xl p-5 space-y-3">
-                                <h2 className="font-semibold text-white border-b border-white/8 pb-3">ผลการ Parse</h2>
+                            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+                                <h2 className="font-semibold text-white border-b border-white/10 pb-3">ผลการ Parse</h2>
                                 <div className="space-y-2 text-xs">
                                     <div className="flex justify-between">
                                         <span className="text-slate-500">ไฟล์</span>
@@ -323,7 +450,7 @@ export default function ImportDocxPage() {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-500">Title</span>
-                                        <span className={title ? "text-emerald-400" : "text-red-400"}>{title ? "✓" : "ไม่พบ H1"}</span>
+                                        <span className={title ? "text-emerald-400" : "text-red-400"}>{title ? "✓" : "ไม่พบ"}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-500">Category</span>
@@ -331,7 +458,7 @@ export default function ImportDocxPage() {
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-500">Tags</span>
-                                        <span className={tags ? "text-emerald-400" : "text-slate-600"}>{tags ? `${tags.split(",").length} tags` : "—"}</span>
+                                        <span className={tagList.length > 0 ? "text-emerald-400" : "text-slate-600"}>{tagList.length > 0 ? `${tagList.length} tags` : "—"}</span>
                                     </div>
                                     <div className="flex justify-between">
                                         <span className="text-slate-500">SEO</span>

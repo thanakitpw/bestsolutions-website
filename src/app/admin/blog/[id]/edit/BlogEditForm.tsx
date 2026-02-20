@@ -5,8 +5,39 @@ import { useRouter } from "next/navigation";
 import { ImageUploader } from "@/components/admin/ImageUploader";
 import { updateBlogPost } from "../../../actions";
 import type { Article } from "@/lib/types";
-import { Loader2, Send, Save, ArrowLeft } from "lucide-react";
+import { Loader2, Send, Save, ArrowLeft, X, Plus } from "lucide-react";
 import Link from "next/link";
+
+const CATEGORIES = [
+    "Digital Marketing",
+    "SEO",
+    "Content Marketing",
+    "Social Media",
+    "Email Marketing",
+    "PPC",
+    "Web Design",
+    "E-commerce",
+    "Analytics",
+    "Strategy",
+];
+
+const SUGGESTED_TAGS = [
+    "SEO",
+    "Google Ads",
+    "Facebook Ads",
+    "Content Strategy",
+    "Social Media",
+    "Email Marketing",
+    "Web Design",
+    "E-commerce",
+    "Analytics",
+    "Digital Strategy",
+    "Marketing Tips",
+    "Online Business",
+    "Conversion",
+    "Brand Building",
+    "Lead Generation",
+];
 
 interface Props {
     post: Article;
@@ -18,6 +49,9 @@ export function BlogEditForm({ post }: Props) {
     const [coverImage, setCoverImage] = useState(post.cover_image ?? "");
     const [error, setError] = useState<string | null>(null);
     const [publishMode, setPublishMode] = useState<"publish" | "draft" | null>(null);
+    const [category, setCategory] = useState(post.category ?? "");
+    const [tagList, setTagList] = useState<string[]>(post.tags ?? []);
+    const [tagInput, setTagInput] = useState("");
 
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>, publish: boolean) {
         e.preventDefault();
@@ -27,6 +61,8 @@ export function BlogEditForm({ post }: Props) {
         const formData = new FormData(e.currentTarget);
         formData.set("cover_image", coverImage);
         formData.set("publish", publish ? "true" : "false");
+        formData.set("category", category);
+        formData.set("tags", JSON.stringify(tagList));
 
         startTransition(async () => {
             const result = await updateBlogPost(post.id, formData);
@@ -115,11 +151,61 @@ export function BlogEditForm({ post }: Props) {
                         <h2 className="font-semibold text-white border-b border-white/8 pb-3">ข้อมูลเพิ่มเติม</h2>
                         <div>
                             <label className={labelCls}>หมวดหมู่</label>
-                            <input name="category" defaultValue={post.category ?? ""} className={inputSmCls} />
+                            <select value={category} onChange={(e) => setCategory(e.target.value)} className={inputSmCls}>
+                                <option value="">เลือกหมวดหมู่</option>
+                                {CATEGORIES.map((cat) => (
+                                    <option key={cat} value={cat}>{cat}</option>
+                                ))}
+                            </select>
                         </div>
                         <div>
-                            <label className={labelCls}>Tags <span className="text-slate-600 font-normal">คั่นด้วย comma</span></label>
-                            <input name="tags" defaultValue={post.tags?.join(", ") ?? ""} className={inputSmCls} />
+                            <label className={labelCls}>Tags</label>
+                            <div className="flex flex-wrap gap-2 mb-3">
+                                {tagList.map((tag) => (
+                                    <span key={tag} className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full border border-blue-500/30">
+                                        {tag}
+                                        <button type="button" onClick={() => setTagList(tagList.filter(t => t !== tag))} className="hover:text-blue-300">
+                                            <X className="w-3 h-3" />
+                                        </button>
+                                    </span>
+                                ))}
+                            </div>
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    value={tagInput}
+                                    onChange={(e) => setTagInput(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && tagInput.trim()) {
+                                            e.preventDefault();
+                                            if (!tagList.includes(tagInput.trim())) {
+                                                setTagList([...tagList, tagInput.trim()]);
+                                            }
+                                            setTagInput("");
+                                        }
+                                    }}
+                                    placeholder="พิมพ์แล้วกด Enter"
+                                    className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                                />
+                                <button type="button" onClick={() => {
+                                    if (tagInput.trim() && !tagList.includes(tagInput.trim())) {
+                                        setTagList([...tagList, tagInput.trim()]);
+                                        setTagInput("");
+                                    }
+                                }} className="p-2 bg-blue-500/20 text-blue-400 rounded-xl hover:bg-blue-500/30 transition-colors">
+                                    <Plus className="w-4 h-4" />
+                                </button>
+                            </div>
+                            <div className="mt-3">
+                                <p className="text-xs text-slate-500 mb-2">แนะนำ:</p>
+                                <div className="flex flex-wrap gap-1">
+                                    {SUGGESTED_TAGS.filter(tag => !tagList.includes(tag)).slice(0, 8).map((tag) => (
+                                        <button key={tag} type="button" onClick={() => setTagList([...tagList, tag])} className="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded-full text-slate-400 hover:bg-white/10 hover:text-white transition-colors">
+                                            + {tag}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label className={labelCls}>ผู้เขียน</label>

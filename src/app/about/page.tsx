@@ -7,6 +7,19 @@ import { Users, Target, Lightbulb, CheckCircle2, ArrowRight, Brain, Palette, Zap
 export const metadata = {
     title: "เกี่ยวกับเรา | Best Solutions - Digital Marketing Agency",
     description: "รู้จักกับ Best Solutions เพื่อนคู่คิดทางการตลาดออนไลน์ ดูแลธุรกิจกว่า 100+ ราย ด้วยทีมงานมากประสบการณ์กว่า 10 ปี",
+    alternates: { canonical: "https://www.bestsolutionscorp.com/about" },
+    openGraph: {
+        title: "เกี่ยวกับเรา | Best Solutions",
+        description: "รู้จักกับ Best Solutions เพื่อนคู่คิดทางการตลาดออนไลน์ ดูแลธุรกิจกว่า 100+ ราย ด้วยทีมงานมากประสบการณ์กว่า 10 ปี",
+        url: "https://www.bestsolutionscorp.com/about",
+        images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Best Solutions - เกี่ยวกับเรา" }],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "เกี่ยวกับเรา | Best Solutions",
+        description: "รู้จักกับ Best Solutions เพื่อนคู่คิดทางการตลาดออนไลน์ ดูแลธุรกิจกว่า 100+ ราย",
+        images: ["/og-default.jpg"],
+    },
 };
 
 const workflowSteps = [

@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Monitor, BarChart3, TrendingUp, ArrowRight } from "lucide-react";
+import { Monitor, BarChart3, TrendingUp, ArrowRight, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import { TechStack } from "@/components/TechStack";
 import { AboutUs } from "@/components/AboutUs";
@@ -10,8 +10,10 @@ import { HowWeWork } from "@/components/HowWeWork";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { OurClients } from "@/components/OurClients";
 import { LoadMoreButton } from "@/components/LoadMoreButton";
+import { getArticles } from "@/lib/services/articleService";
 
-export default function Home() {
+export default async function Home() {
+  const latestPosts = (await getArticles()).slice(0, 3);
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -195,10 +197,44 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Blog posts will be dynamically loaded here */}
-          <div className="text-center py-12 text-slate-400">
-            <p>กำลังโหลดบทความล่าสุด...</p>
-          </div>
+          {latestPosts.length === 0 ? (
+            <div className="text-center py-12 text-slate-400">
+              <p>ยังไม่มีบทความในขณะนี้</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-3 gap-8">
+              {latestPosts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col">
+                  <div className="relative h-48 overflow-hidden bg-slate-100">
+                    {post.cover_image
+                      ? <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      : <div className="absolute inset-0 bg-gradient-to-br from-[#F51036]/10 to-[#25137A]/10" />}
+                    {post.category && (
+                      <span className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur text-xs font-bold text-slate-800 rounded-full shadow-sm">
+                        {post.category}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <p className="text-xs text-slate-400 mb-2 flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {new Date(post.published_at).toLocaleDateString("th-TH", { year: "numeric", month: "short", day: "numeric" })}
+                    </p>
+                    <h3 className="font-bold text-slate-900 line-clamp-2 group-hover:text-[#F51036] transition-colors leading-snug mb-3">
+                      {post.title}
+                    </h3>
+                    {post.excerpt && (
+                      <p className="text-sm text-slate-500 line-clamp-2 mb-4">{post.excerpt}</p>
+                    )}
+                    <span className="inline-flex items-center gap-1 text-[#F51036] text-xs font-semibold mt-auto group-hover:gap-2 transition-all">
+                      อ่านต่อ <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
 
           <div className="mt-8 text-center md:hidden">
             <Link href="/blog" className="inline-flex items-center text-[var(--color-primary-start)] font-bold">

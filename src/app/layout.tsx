@@ -10,7 +10,7 @@ const notoSansThai = Noto_Sans_Thai({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bestsolutions.co.th"), // Placeholder URL
+  metadataBase: new URL("https://www.bestsolutionscorp.com"), // Placeholder URL
   title: {
     default: "Best Solutions - Digital Marketing Agency",
     template: "%s | Best Solutions Corp",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Best Solutions - Digital Marketing Agency",
     description: "เพื่อนคู่คิดทางการตลาดออนไลน์ ที่ช่วยให้ธุรกิจคุณเติบโตอย่างยั่งยืน",
-    url: "https://bestsolutions.co.th",
+    url: "https://www.bestsolutionscorp.com",
     siteName: "Best Solutions Corp",
     locale: "th_TH",
     type: "website",

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import type { Metadata } from "next";
 
-const BASE_URL = "https://bestsolutions.co.th";
+const BASE_URL = "https://www.bestsolutionscorp.com";
 
 interface Props {
     params: Promise<{ slug: string }>;

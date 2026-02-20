@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getArticles } from "@/lib/services/articleService";
 import { getPortfolios } from "@/lib/services/portfolioService";
 
-const BASE_URL = "https://bestsolutionscorp.com";
+const BASE_URL = "https://www.bestsolutionscorp.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // During build time, return static routes only

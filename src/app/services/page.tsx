@@ -5,8 +5,21 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, Zap, Monitor, BarChart3, TrendingUp, Search, MessageCircle, RefreshCw, Layers, Users, Target, Camera, CloudLightning, Code, Paintbrush, Share2, Rocket, CheckCircle } from "lucide-react";
 
 export const metadata = {
-    title: "Solutions | Best Solutions - แก้ปัญหาธุรกิจด้วย Digital Marketing",
-    description: "เปลี่ยนปัญหาการตลาดให้เป็นยอดขาย ด้วยโซลูชั่นที่ตอบโจทย์: Build, Attract, Convert ครบวงจร",
+    title: "บริการของเรา | Best Solutions - Digital Marketing Agency",
+    description: "เปลี่ยนปัญหาการตลาดให้เป็นยอดขาย ด้วยโซลูชั่นที่ตอบโจทย์ครบวงจร: รับทำเว็บไซต์ SEO ยิงแอด Facebook/Google และกราฟิกดีไซน์",
+    alternates: { canonical: "https://www.bestsolutionscorp.com/services" },
+    openGraph: {
+        title: "บริการของเรา | Best Solutions",
+        description: "เปลี่ยนปัญหาการตลาดให้เป็นยอดขาย ด้วยโซลูชั่นที่ตอบโจทย์ครบวงจร",
+        url: "https://www.bestsolutionscorp.com/services",
+        images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "Best Solutions - บริการ Digital Marketing" }],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "บริการของเรา | Best Solutions",
+        description: "รับทำเว็บไซต์ SEO ยิงแอด Facebook/Google และกราฟิกดีไซน์",
+        images: ["/og-default.jpg"],
+    },
 };
 
 const pillars = [

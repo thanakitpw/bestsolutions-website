@@ -3,6 +3,7 @@ import { AdminSidebar } from "@/components/admin/AdminSidebar";
 
 export const metadata: Metadata = {
     title: "Admin | Best Solutions",
+    robots: { index: false, follow: false },
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

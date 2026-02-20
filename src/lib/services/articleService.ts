@@ -6,8 +6,11 @@ export async function getArticles(): Promise<Article[]> {
     const { data, error } = await supabase
         .from("blog_posts")
         .select("*")
+        .gt("published_at", "1970-01-01T00:00:00Z") // Only published posts
         .order("published_at", { ascending: false });
 
+    console.log("getArticles result:", { data, error });
+    
     if (error) {
         console.error("Error fetching articles:", error.message);
         return [];
