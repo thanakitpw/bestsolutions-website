@@ -172,8 +172,9 @@ export default async function BlogPostPage({ params }: Props) {
                             className="
                                 [&_p]:text-slate-900 [&_p]:leading-[1.9] [&_p]:text-[1.0625rem] [&_p]:mb-6 [&_p]:[text-indent:1.5em]
                                 [&_li]:text-slate-900 [&_li]:leading-relaxed [&_li]:text-[1.0625rem]
-                                [&_ul]:my-5 [&_ul]:space-y-2 [&_ol]:my-5 [&_ol]:space-y-2
-                                [&_ul>li]:relative [&_ul>li]:pl-2 [&_ol>li]:pl-2
+                                [&_ul]:my-5 [&_ul]:space-y-2 [&_ul]:list-disc [&_ul]:pl-6
+                                [&_ol]:my-5 [&_ol]:space-y-2 [&_ol]:list-decimal [&_ol]:pl-6
+                                [&_ul>li]:pl-1 [&_ol>li]:pl-1
 
                                 [&_h1]:text-4xl [&_h1]:font-extrabold [&_h1]:text-[#1a1a2e] [&_h1]:tracking-tight [&_h1]:leading-tight [&_h1]:mt-14 [&_h1]:mb-6
                                 [&_h2]:text-2xl [&_h2]:font-extrabold [&_h2]:text-[#1a1a2e] [&_h2]:tracking-tight [&_h2]:mt-12 [&_h2]:mb-4 [&_h2]:pb-3 [&_h2]:border-b-2 [&_h2]:border-slate-100

@@ -4,11 +4,14 @@ import { useState, useRef, useTransition } from "react";
 import Link from "next/link";
 import {
     ArrowLeft, Upload, FileText, Loader2, CheckCircle2,
-    AlertCircle, Eye, EyeOff, Send, Save, ChevronDown, ChevronUp, Info, X, Plus
+    AlertCircle, Send, Save, ChevronDown, ChevronUp, Info, X, Plus
 } from "lucide-react";
 import { parseDocxFile, type ParsedDoc } from "./actions";
 import { createBlogPost } from "../../actions";
+import dynamic from "next/dynamic";
 import ImageUploader from "./ImageUploader";
+
+const RichTextEditor = dynamic(() => import("./RichTextEditor"), { ssr: false });
 
 type Step = "upload" | "preview" | "done";
 
@@ -42,7 +45,6 @@ export default function ImportDocxPage() {
     const [parseError, setParseError] = useState<string | null>(null);
     const [saveError, setSaveError] = useState<string | null>(null);
     const [parsed, setParsed] = useState<ParsedDoc | null>(null);
-    const [showRawHtml, setShowRawHtml] = useState(false);
     const [showGuide, setShowGuide] = useState(false);
     const [fileName, setFileName] = useState("");
 
@@ -264,45 +266,8 @@ export default function ImportDocxPage() {
                                     <textarea value={excerpt} onChange={e => setExcerpt(e.target.value)} rows={4} className={`${inputCls} resize-none`} />
                                 </div>
                                 <div>
-                                    <div className="flex items-center justify-between mb-1.5">
-                                        <label className={labelCls} style={{ marginBottom: 0 }}>เนื้อหา HTML</label>
-                                        <button
-                                            type="button"
-                                            onClick={() => setShowRawHtml(!showRawHtml)}
-                                            className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors border border-white/10"
-                                        >
-                                            {showRawHtml ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />}
-                                            {showRawHtml ? "แก้ไข HTML" : "ดู Preview"}
-                                        </button>
-                                    </div>
-                                    {showRawHtml ? (
-                                        <div className="rounded-2xl overflow-hidden border border-white/10">
-                                            <div className="bg-white/5 px-4 py-2 text-xs text-slate-500 border-b border-white/10 flex items-center gap-2">
-                                                <Eye className="w-3 h-3" /> Preview บทความ
-                                            </div>
-                                            <div
-                                                className="bg-white p-6 text-slate-900 text-sm leading-relaxed"
-                                                dangerouslySetInnerHTML={{ __html: content
-                                                    .replace(/<h2/g, '<h2 style="font-size:1.35rem;font-weight:700;margin:1.75rem 0 0.75rem;color:#1e293b;border-left:4px solid #3b82f6;padding-left:12px;line-height:1.3"')
-                                                    .replace(/<h3/g, '<h3 style="font-size:1.1rem;font-weight:600;margin:1.25rem 0 0.5rem;color:#334155;padding-left:4px"')
-                                                    .replace(/<h4/g, '<h4 style="font-size:1rem;font-weight:600;margin:1rem 0 0.4rem;color:#475569"')
-                                                    .replace(/<p/g, '<p style="margin:0.75rem 0;line-height:1.8;color:#374151"')
-                                                    .replace(/<ul/g, '<ul style="margin:0.75rem 0;padding-left:1.5rem;list-style:disc;color:#374151"')
-                                                    .replace(/<ol/g, '<ol style="margin:0.75rem 0;padding-left:1.5rem;list-style:decimal;color:#374151"')
-                                                    .replace(/<li/g, '<li style="margin:0.35rem 0"')
-                                                    .replace(/<strong/g, '<strong style="font-weight:700;color:#1e293b"')
-                                                    .replace(/<blockquote/g, '<blockquote style="border-left:4px solid #e2e8f0;padding:0.5rem 1rem;margin:1rem 0;color:#64748b;font-style:italic;background:#f8fafc;border-radius:0 8px 8px 0"')
-                                                }}
-                                            />
-                                        </div>
-                                    ) : (
-                                        <textarea
-                                            value={content}
-                                            onChange={e => setContent(e.target.value)}
-                                            rows={18}
-                                            className={`${inputCls} resize-y font-mono text-xs`}
-                                        />
-                                    )}
+                                    <label className={labelCls}>เนื้อหา</label>
+                                    <RichTextEditor value={content} onChange={setContent} />
                                 </div>
                             </div>
 
