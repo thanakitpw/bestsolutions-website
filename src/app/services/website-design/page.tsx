@@ -1,23 +1,21 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { CheckCircle2, Clock, Shield, Star, Users, Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { CheckCircle2, Clock, Shield, Star, Users, MessageCircle, ArrowRight } from "lucide-react";
 import { packages, whyUs, steps, examples, testimonials, faqs } from "./data";
 
 export const metadata = {
     title: "เว็บไซต์ 5,000 บาท! พร้อมใช้งานใน 7 วัน | Best Solutions",
     description: "รับทำเว็บไซต์ราคาถูกที่สุดในตลาด เริ่มต้นเพียง 5,000 บาท พร้อมใช้งานใน 7 วัน รองรับมือถือ 100%",
-    alternates: { canonical: "https://www.bestsolutionscorp.com/landing/web-design-cheap" },
+    alternates: { canonical: "https://www.bestsolutionscorp.com/services/website-design" },
     openGraph: {
         title: "เว็บไซต์ 5,000 บาท! พร้อมใช้งานใน 7 วัน",
         description: "รับทำเว็บไซต์ราคาถูกที่สุดในตลาด เริ่มต้นเพียง 5,000 บาท",
-        url: "https://www.bestsolutionscorp.com/landing/web-design-cheap",
+        url: "https://www.bestsolutionscorp.com/services/website-design",
         images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "เว็บไซต์ 5,000 บาท" }],
     },
 };
 
 const LINE_URL = "https://lin.ee/IlvhwZV";
-const PHONE = "tel:0999999999";
-const PHONE_DISPLAY = "099-999-9999";
 
 export default function WebDesignLandingPage() {
     return (
@@ -34,7 +32,7 @@ export default function WebDesignLandingPage() {
                         <div className="pb-16">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F51036]/10 border border-[#F51036]/30 text-[#F51036] text-sm font-semibold mb-8">
                                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F51036] opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-[#F51036]" /></span>
-                                เหลือเพียง 5 แพ็คเกจราคาพิเศษเดือนนี้!
+                                รับเพียง 5 เว็บไซต์ต่อเดือน
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">
                                 เว็บไซต์
@@ -48,12 +46,9 @@ export default function WebDesignLandingPage() {
                                 <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#F51036] to-orange-500 text-white font-bold text-lg rounded-full shadow-lg shadow-red-500/30 hover:scale-[1.02] transition-all">
                                     <MessageCircle className="w-5 h-5" />ปรึกษาฟรีผ่าน LINE
                                 </a>
-                                <a href={PHONE} className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-bold text-lg rounded-full hover:bg-white/10 transition-all">
-                                    <Phone className="w-5 h-5" />{PHONE_DISPLAY}
-                                </a>
                             </div>
                             <div className="flex flex-wrap gap-3">
-                                {[{icon:Shield,label:"รับประกันความพึงพอใจ",color:"text-green-400"},{icon:Clock,label:"7 วันเสร็จ",color:"text-blue-400"},{icon:Users,label:"500+ ลูกค้าไว้วางใจ",color:"text-purple-400"}].map(({icon:Icon,label,color})=>(
+                                {[{icon:Shield,label:"ดูแลเว็บไซต์หลังส่งมอบ 30 วัน",color:"text-green-400"},{icon:Clock,label:"7 วันเสร็จ",color:"text-blue-400"},{icon:Users,label:"500+ ลูกค้าไว้วางใจ",color:"text-purple-400"}].map(({icon:Icon,label,color})=>(
                                     <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-slate-300">
                                         <Icon className={`w-3.5 h-3.5 ${color}`}/>{label}
                                     </div>
@@ -106,9 +101,9 @@ export default function WebDesignLandingPage() {
                         <p className="text-slate-500 text-lg">ราคาถูกที่สุดในตลาด ไม่มีค่าใช้จ่ายแอบแฝง</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                        {packages.map((pkg) => (
-                            <div key={pkg.name} className={`relative rounded-3xl p-8 bg-white border-2 ${pkg.borderClass} shadow-lg hover:shadow-2xl transition-all ${pkg.popular?"scale-[1.03]":""}`}>
-                                {pkg.badge && <div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 ${pkg.badgeBg} text-white text-sm font-bold rounded-full shadow-lg`}>{pkg.badge}</div>}
+                        {packages.map((pkg, idx) => (
+                            <div key={pkg.name} className={`relative rounded-3xl p-8 bg-white border-2 ${pkg.borderClass} shadow-lg hover:shadow-2xl transition-all ${idx === 1 ? "scale-[1.03]" : ""}`}>
+                                {idx === 1 && pkg.badge && (<div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 ${pkg.badgeBg} text-white text-sm font-bold rounded-full shadow-lg`}>{pkg.badge}</div>)}
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className={`w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center ${pkg.accentColor}`}><pkg.Icon className="w-6 h-6"/></div>
                                     <div><h3 className="text-xl font-extrabold text-slate-900">{pkg.name}</h3><p className="text-slate-500 text-xs">{pkg.description}</p></div>
@@ -267,9 +262,6 @@ export default function WebDesignLandingPage() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#F51036] font-bold px-10 py-4 rounded-full hover:bg-slate-50 transition-colors shadow-xl text-lg">
                                 <MessageCircle className="w-5 h-5"/>ทักมาหาเราผ่าน LINE
-                            </a>
-                            <a href={PHONE} className="inline-flex items-center gap-2 bg-white/10 text-white font-bold px-10 py-4 rounded-full hover:bg-white/20 transition-colors border border-white/20 text-lg">
-                                <Phone className="w-5 h-5"/>{PHONE_DISPLAY}
                             </a>
                         </div>
                         <p className="text-white/50 text-sm mt-8">ตอบทุกคำถามภายใน 5 นาที · เปิดบริการทุกวัน 9:00 - 21:00 น.</p>
