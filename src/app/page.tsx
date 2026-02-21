@@ -11,11 +11,13 @@ import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { OurClients } from "@/components/OurClients";
 import { LoadMoreButton } from "@/components/LoadMoreButton";
 import { getArticles } from "@/lib/services/articleService";
+import { WebDesignPopup } from "@/components/WebDesignPopup";
 
 export default async function Home() {
   const latestPosts = (await getArticles()).slice(0, 3);
   return (
     <main className="min-h-screen">
+      <WebDesignPopup />
       <Navbar />
 
       {/* Hero Section */}
