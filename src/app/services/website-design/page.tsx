@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CheckCircle2, Clock, Shield, Star, Users, MessageCircle, ArrowRight } from "lucide-react";
 import { packages, whyUs, steps, examples, testimonials, faqs } from "./data";
+import { FadeUp, FadeIn, StaggerChildren, StaggerItem } from "./AnimatedSection";
 
 export const metadata = {
     title: "เว็บไซต์ 5,000 บาท! พร้อมใช้งานใน 7 วัน | Best Solutions",
@@ -29,7 +30,7 @@ export default function WebDesignLandingPage() {
                 <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#25137A]/30 rounded-full blur-[100px] pointer-events-none" />
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-0">
                     <div className="grid lg:grid-cols-2 gap-12 items-end">
-                        <div className="pb-16">
+                        <FadeUp delay={0} className="pb-16">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F51036]/10 border border-[#F51036]/30 text-[#F51036] text-sm font-semibold mb-8">
                                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F51036] opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-[#F51036]" /></span>
                                 รับเพียง 5 เว็บไซต์ต่อเดือน
@@ -54,9 +55,9 @@ export default function WebDesignLandingPage() {
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </FadeUp>
                         {/* Browser mockup */}
-                        <div className="relative flex justify-center lg:justify-end">
+                        <FadeUp delay={0.2} className="relative flex justify-center lg:justify-end">
                             <div className="relative w-full max-w-[520px]">
                                 <div className="bg-[#1a1f2e] rounded-t-2xl border border-white/10 shadow-2xl overflow-hidden">
                                     <div className="flex items-center gap-2 px-4 py-3 bg-[#0d1117] border-b border-white/10">
@@ -84,7 +85,7 @@ export default function WebDesignLandingPage() {
                                     <span className="text-[#F51036] text-lg font-black">฿5K</span><span className="text-slate-500 text-xs">เริ่มต้นเท่านี้!</span>
                                 </div>
                             </div>
-                        </div>
+                        </FadeUp>
                     </div>
                 </div>
                 <div className="relative mt-16">
@@ -95,14 +96,14 @@ export default function WebDesignLandingPage() {
             {/* PRICING */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">แพ็คเกจราคา</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2 mb-3">เลือกแพ็คเกจที่เหมาะกับคุณ</h2>
                         <p className="text-slate-500 text-lg">ราคาถูกที่สุดในตลาด ไม่มีค่าใช้จ่ายแอบแฝง</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    </FadeUp>
+                    <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
                         {packages.map((pkg, idx) => (
-                            <div key={pkg.name} className={`relative rounded-3xl p-8 bg-white border-2 ${pkg.borderClass} shadow-lg hover:shadow-2xl transition-all ${idx === 1 ? "scale-[1.03]" : ""}`}>
+                            <StaggerItem key={pkg.name} className={`relative rounded-3xl p-8 bg-white border-2 ${pkg.borderClass} shadow-lg hover:shadow-2xl transition-all ${idx === 1 ? "scale-[1.03]" : ""}`}>
                                 {idx === 1 && pkg.badge && (<div className={`absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 ${pkg.badgeBg} text-white text-sm font-bold rounded-full shadow-lg`}>{pkg.badge}</div>)}
                                 <div className="flex items-center gap-3 mb-6">
                                     <div className={`w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center ${pkg.accentColor}`}><pkg.Icon className="w-6 h-6"/></div>
@@ -125,9 +126,9 @@ export default function WebDesignLandingPage() {
                                 <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02] ${pkg.btnClass}`}>
                                     เลือกแพ็คเกจนี้ <ArrowRight className="w-4 h-4"/>
                                 </a>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                     <p className="text-center text-slate-400 text-sm mt-8">* ราคาเริ่มต้น สามารถปรับตามความต้องการได้ · ปรึกษาฟรีไม่มีค่าใช้จ่าย</p>
                 </div>
             </section>
@@ -135,53 +136,53 @@ export default function WebDesignLandingPage() {
             {/* WHY US */}
             <section className="py-20 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">ทำไมต้องเรา</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">เราคือทางเลือกที่ดีที่สุด</h2>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    </FadeUp>
+                    <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {whyUs.map(({icon:Icon,color,title,desc})=>(
-                            <div key={title} className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow text-center">
+                            <StaggerItem key={title} className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow text-center">
                                 <div className={`w-16 h-16 rounded-2xl ${color} flex items-center justify-center mx-auto mb-5`}><Icon className="w-8 h-8"/></div>
                                 <h3 className="text-lg font-extrabold text-slate-900 mb-2">{title}</h3>
                                 <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                 </div>
             </section>
 
             {/* PROCESS */}
             <section className="py-20 bg-white">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">ขั้นตอน</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">เริ่มต้นง่ายๆ เพียง 4 ขั้นตอน</h2>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
+                    </FadeUp>
+                    <StaggerChildren className="grid grid-cols-1 md:grid-cols-4 gap-0">
                         {steps.map((s,i)=>(
-                            <div key={s.n} className="relative flex flex-col items-center text-center px-4">
+                            <StaggerItem key={s.n} className="relative flex flex-col items-center text-center px-4">
                                 {i < steps.length-1 && <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] right-0 h-0.5 bg-gradient-to-r from-[#F51036]/40 to-transparent"/>}
                                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#F51036] to-orange-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-red-500/20 mb-5 relative z-10">{s.n}</div>
                                 <h3 className="text-lg font-extrabold text-slate-900 mb-2">{s.title}</h3>
                                 <p className="text-slate-500 text-sm leading-relaxed">{s.desc}</p>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                 </div>
             </section>
 
             {/* EXAMPLES */}
             <section className="py-20 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">ตัวอย่างผลงาน</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">เหมาะกับธุรกิจทุกประเภท</h2>
                         <p className="text-slate-500 mt-3">ไม่ว่าจะเป็นธุรกิจอะไร เราทำได้ทั้งหมด</p>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    </FadeUp>
+                    <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {examples.map((ex)=>(
-                            <div key={ex.title} className="group rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 bg-white">
+                            <StaggerItem key={ex.title} className="group rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 bg-white">
                                 <div className={`aspect-[4/3] bg-gradient-to-br ${ex.gradient} relative flex flex-col items-center justify-center p-6`}>
                                     <div className="absolute top-0 left-0 right-0 h-7 bg-black/20 flex items-center px-3 gap-1.5">
                                         <div className="w-2 h-2 rounded-full bg-white/40"/><div className="w-2 h-2 rounded-full bg-white/40"/><div className="w-2 h-2 rounded-full bg-white/40"/>
@@ -199,22 +200,22 @@ export default function WebDesignLandingPage() {
                                         {ex.tags.map(tag=><span key={tag} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-full font-medium">{tag}</span>)}
                                     </div>
                                 </div>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                 </div>
             </section>
 
             {/* TESTIMONIALS */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">รีวิวลูกค้า</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">ลูกค้าพูดถึงเรา</h2>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    </FadeUp>
+                    <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {testimonials.map((t)=>(
-                            <div key={t.name} className="bg-slate-50 rounded-3xl p-8">
+                            <StaggerItem key={t.name} className="bg-slate-50 rounded-3xl p-8">
                                 <div className="text-5xl text-slate-200 font-serif leading-none mb-4">"</div>
                                 <div className="flex gap-0.5 mb-4">{[...Array(t.rating)].map((_,i)=><Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400"/>)}</div>
                                 <p className="text-slate-700 leading-relaxed mb-6 text-[0.95rem]">{t.text}</p>
@@ -222,35 +223,36 @@ export default function WebDesignLandingPage() {
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F51036] to-orange-500 flex items-center justify-center text-white font-bold text-sm">{t.name.charAt(2)}</div>
                                     <div><div className="font-bold text-slate-900 text-sm">{t.name}</div><div className="text-slate-500 text-xs">{t.biz}</div></div>
                                 </div>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                 </div>
             </section>
 
             {/* FAQ */}
             <section className="py-20 bg-slate-50">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-14">
+                    <FadeUp className="text-center mb-14">
                         <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">FAQ</span>
                         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">คำถามที่พบบ่อย</h2>
-                    </div>
-                    <div className="space-y-4">
+                    </FadeUp>
+                    <StaggerChildren className="space-y-4">
                         {faqs.map((faq,i)=>(
-                            <div key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                            <StaggerItem key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                                 <h3 className="font-extrabold text-slate-900 mb-2 flex items-start gap-3">
                                     <span className="w-6 h-6 rounded-full bg-[#F51036]/10 text-[#F51036] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">Q</span>
                                     {faq.q}
                                 </h3>
                                 <p className="text-slate-600 leading-relaxed pl-9 text-sm">{faq.a}</p>
-                            </div>
+                            </StaggerItem>
                         ))}
-                    </div>
+                    </StaggerChildren>
                 </div>
             </section>
 
             {/* FINAL CTA */}
             <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+                <FadeUp>
                 <div className="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden bg-gradient-to-r from-[#25137A] to-[#F51036] px-8 py-16 md:px-16 text-center relative">
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]"/>
                     <div className="relative z-10">
@@ -267,6 +269,7 @@ export default function WebDesignLandingPage() {
                         <p className="text-white/50 text-sm mt-8">ตอบทุกคำถามภายใน 5 นาที · เปิดบริการทุกวัน 9:00 - 21:00 น.</p>
                     </div>
                 </div>
+                </FadeUp>
             </section>
 
             <Footer />
