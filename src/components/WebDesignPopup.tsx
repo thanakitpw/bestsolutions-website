@@ -6,9 +6,11 @@ import { X, ArrowRight, Zap, CheckCircle2, Clock, Shield } from "lucide-react";
 import Link from "next/link";
 
 export function WebDesignPopup() {
+    const [mounted, setMounted] = useState(false);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const dismissed = sessionStorage.getItem("popup-dismissed");
         if (dismissed) return;
         const timer = setTimeout(() => setOpen(true), 3000);
@@ -19,6 +21,8 @@ export function WebDesignPopup() {
         setOpen(false);
         sessionStorage.setItem("popup-dismissed", "1");
     };
+
+    if (!mounted) return null;
 
     return (
         <AnimatePresence>
