@@ -182,22 +182,33 @@ export default function WebDesignLandingPage() {
                     </FadeUp>
                     <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {examples.map((ex)=>(
-                            <StaggerItem key={ex.title} className="group rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all hover:-translate-y-1 bg-white">
-                                <div className={`aspect-[4/3] bg-gradient-to-br ${ex.gradient} relative flex flex-col items-center justify-center p-6`}>
-                                    <div className="absolute top-0 left-0 right-0 h-7 bg-black/20 flex items-center px-3 gap-1.5">
-                                        <div className="w-2 h-2 rounded-full bg-white/40"/><div className="w-2 h-2 rounded-full bg-white/40"/><div className="w-2 h-2 rounded-full bg-white/40"/>
-                                        <div className="flex-1 mx-2 h-3 bg-white/20 rounded-full"/>
+                            <StaggerItem key={ex.title} className="group flex flex-col bg-white rounded-[2rem] p-3 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
+                                <div className={`relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br ${ex.gradient} p-4 sm:p-5 flex items-center justify-center`}>
+                                    {/* Subtle grid background */}
+                                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
+                                    
+                                    {/* Mockup Window */}
+                                    <div className="relative w-[90%] h-[85%] bg-[#0B0F19] rounded-xl shadow-2xl border border-white/10 overflow-hidden flex flex-col group-hover:scale-105 transition-transform duration-500">
+                                        {/* Browser Header */}
+                                        <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1a1f2e] border-b border-white/5">
+                                            <div className="w-2 h-2 rounded-full bg-red-500/80" />
+                                            <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                                            <div className="w-2 h-2 rounded-full bg-green-500/80" />
+                                        </div>
+                                        {/* Content Area */}
+                                        <div className="flex-1 flex flex-col items-center justify-center bg-gradient-to-b from-[#0B0F19] to-[#12182b] relative">
+                                            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_0%,transparent_70%)]" />
+                                            <span className="text-4xl sm:text-5xl mb-3 relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300">{ex.emoji}</span>
+                                            <div className="w-1/2 h-1.5 bg-white/20 rounded-full mb-1.5 relative z-10" />
+                                            <div className="w-1/3 h-1 bg-white/10 rounded-full relative z-10" />
+                                        </div>
                                     </div>
-                                    <span className="text-5xl mb-3 mt-4">{ex.emoji}</span>
-                                    <div className="w-3/4 h-2.5 bg-white/50 rounded-full mb-2"/>
-                                    <div className="w-1/2 h-2 bg-white/30 rounded-full mb-4"/>
-                                    <div className="w-20 h-6 bg-white/30 rounded-full"/>
                                 </div>
-                                <div className="p-5">
-                                    <h3 className="text-lg font-extrabold text-slate-900 mb-1">{ex.title}</h3>
-                                    <p className="text-slate-500 text-sm mb-3">{ex.desc}</p>
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {ex.tags.map(tag=><span key={tag} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-full font-medium">{tag}</span>)}
+                                <div className="p-4 sm:p-5 flex-1 flex flex-col">
+                                    <h3 className="text-xl font-extrabold text-slate-900 mb-1">{ex.title}</h3>
+                                    <p className="text-slate-500 text-sm mb-4 leading-relaxed">{ex.desc}</p>
+                                    <div className="mt-auto flex flex-wrap gap-1.5">
+                                        {ex.tags.map(tag=><span key={tag} className="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 text-[0.7rem] rounded-full font-semibold">{tag}</span>)}
                                     </div>
                                 </div>
                             </StaggerItem>
