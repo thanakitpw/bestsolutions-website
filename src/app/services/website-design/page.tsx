@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CheckCircle2, Clock, Shield, Star, Users, MessageCircle, ArrowRight } from "lucide-react";
 import { packages, whyUs, steps, examples, testimonials, faqs } from "./data";
+import Image from "next/image";
 import { FadeUp, FadeIn, StaggerChildren, StaggerItem } from "./AnimatedSection";
 
 export const metadata = {
@@ -183,25 +184,22 @@ export default function WebDesignLandingPage() {
                     <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {examples.map((ex)=>(
                             <StaggerItem key={ex.title} className="group flex flex-col bg-white rounded-[2rem] p-3 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-100">
-                                <div className={`relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br ${ex.gradient} p-4 sm:p-5 flex items-center justify-center`}>
-                                    {/* Subtle grid background */}
-                                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:16px_16px]" />
-                                    
-                                    {/* Mockup Window */}
-                                    <div className="relative w-[90%] h-[85%] bg-[#0B0F19] rounded-xl shadow-2xl border border-white/10 overflow-hidden flex flex-col group-hover:scale-105 transition-transform duration-500">
-                                        {/* Browser Header */}
-                                        <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1a1f2e] border-b border-white/5">
-                                            <div className="w-2 h-2 rounded-full bg-red-500/80" />
-                                            <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                                            <div className="w-2 h-2 rounded-full bg-green-500/80" />
-                                        </div>
-                                        {/* Content Area */}
-                                        <div className="flex-1 flex flex-col items-center justify-center bg-gradient-to-b from-[#0B0F19] to-[#12182b] relative">
-                                            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_0%,transparent_70%)]" />
-                                            <span className="text-4xl sm:text-5xl mb-3 relative z-10 drop-shadow-2xl group-hover:scale-110 transition-transform duration-300">{ex.emoji}</span>
-                                            <div className="w-1/2 h-1.5 bg-white/20 rounded-full mb-1.5 relative z-10" />
-                                            <div className="w-1/3 h-1 bg-white/10 rounded-full relative z-10" />
-                                        </div>
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-slate-100 flex flex-col border border-slate-200">
+                                    {/* Browser Header */}
+                                    <div className="flex items-center gap-1.5 px-4 py-3 bg-white/80 backdrop-blur-md border-b border-slate-200/60 z-10 absolute top-0 left-0 right-0">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                                        <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                                        <div className="flex-1 mx-2 h-4 bg-slate-100/50 rounded-full" />
+                                    </div>
+                                    {/* Image Content */}
+                                    <div className="relative w-full h-full pt-10">
+                                        <Image 
+                                            src={ex.image} 
+                                            alt={ex.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                        />
                                     </div>
                                 </div>
                                 <div className="p-4 sm:p-5 flex-1 flex flex-col">
