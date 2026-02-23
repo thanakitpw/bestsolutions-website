@@ -35,6 +35,7 @@ const services = [
         accentBg: "bg-blue-600",
         problem: "เว็บไซต์เก่า โหลดช้า ไม่รองรับมือถือ ทำให้เสียลูกค้าทุกวัน",
         description: "ออกแบบและพัฒนาเว็บไซต์ที่สวยงาม ทันสมัย รองรับทุกอุปกรณ์ พร้อมโครงสร้าง SEO ที่ดีตั้งแต่ต้น",
+        landingPageUrl: "/services/website-design",
         features: [
             "ออกแบบ UI/UX ที่ตอบโจทย์ลูกค้า",
             "Responsive รองรับมือถือ 100%",
@@ -239,14 +240,24 @@ export default function ServicesPage() {
                                             ))}
                                         </div>
 
-                                        <a
-                                            href="https://lin.ee/IlvhwZV"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm bg-gradient-to-r ${service.gradient} shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all`}
-                                        >
-                                            ปรึกษาบริการนี้ฟรี <ArrowRight className="w-4 h-4" />
-                                        </a>
+                                        <div className="flex flex-wrap gap-4">
+                                            <a
+                                                href="https://lin.ee/IlvhwZV"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-semibold text-sm bg-gradient-to-r ${service.gradient} shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all`}
+                                            >
+                                                ปรึกษาบริการนี้ฟรี <ArrowRight className="w-4 h-4" />
+                                            </a>
+                                            {service.landingPageUrl && (
+                                                <Link
+                                                    href={service.landingPageUrl}
+                                                    className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border-2 ${service.lightBorder} ${service.accentText} bg-white hover:${service.lightBg} transition-all`}
+                                                >
+                                                    ดูแพ็คเกจและราคา
+                                                </Link>
+                                            )}
+                                        </div>
                                     </div>
 
                                     {/* Visual side */}
