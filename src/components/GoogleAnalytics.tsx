@@ -1,11 +1,9 @@
 import Script from "next/script";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+const GA_ID = "G-611ZJPLYR4";
 const ADS_ID = "AW-17974230607";
 
 export function GoogleAnalytics() {
-  if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return null;
-
   return (
     <>
       <Script
