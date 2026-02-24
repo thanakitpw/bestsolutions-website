@@ -2,6 +2,8 @@
 
 import Script from "next/script";
 
+const GOOGLE_ADS_ID = "AW-17974230607";
+
 export function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -24,6 +26,7 @@ export function GoogleAnalytics() {
             page_location: window.location.href,
             page_title: document.title,
           });
+          gtag('config', 'AW-17974230607');
         `}
       </Script>
     </>
