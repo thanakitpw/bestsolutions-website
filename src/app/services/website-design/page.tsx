@@ -4,7 +4,7 @@ import { CheckCircle2, Clock, Shield, Star, Users, MessageCircle, ArrowRight } f
 import { packages, whyUs, steps, examples, testimonials, faqs } from "./data";
 import Image from "next/image";
 import { FadeUp, FadeIn, StaggerChildren, StaggerItem } from "./AnimatedSection";
-import { ContactForm } from "@/components/ContactForm";
+import { ScrollToFormButton, FaqAndForm } from "./PackageSelectClient";
 
 // Function to mask name to show only 2-3 characters
 const maskName = (name: string): string => {
@@ -131,9 +131,7 @@ export default function WebDesignLandingPage() {
                                         <li key={f} className="flex items-start gap-3"><CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5"/><span className="text-slate-700 text-sm leading-snug">{f}</span></li>
                                     ))}
                                 </ul>
-                                <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-full font-bold text-sm transition-all hover:scale-[1.02] ${pkg.btnClass}`}>
-                                    เลือกแพ็คเกจนี้ <ArrowRight className="w-4 h-4"/>
-                                </a>
+                                <ScrollToFormButton pkgId={pkg.name.toLowerCase().replace("e-commerce", "ecommerce").replace("starter", "basic")} btnClass={pkg.btnClass} />
                             </StaggerItem>
                         ))}
                     </StaggerChildren>
@@ -245,45 +243,10 @@ export default function WebDesignLandingPage() {
                 </div>
             </section>
 
-            {/* FAQ */}
-            <section className="py-20 bg-slate-50">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <FadeUp className="text-center mb-14">
-                        <span className="text-[#F51036] font-bold tracking-wider text-sm uppercase">FAQ</span>
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">คำถามที่พบบ่อย</h2>
-                    </FadeUp>
-                    <StaggerChildren className="space-y-4">
-                        {faqs.map((faq,i)=>(
-                            <StaggerItem key={i} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                                <h3 className="font-extrabold text-slate-900 mb-2 flex items-start gap-3">
-                                    <span className="w-6 h-6 rounded-full bg-[#F51036]/10 text-[#F51036] text-xs font-black flex items-center justify-center shrink-0 mt-0.5">Q</span>
-                                    {faq.q}
-                                </h3>
-                                <p className="text-slate-600 leading-relaxed pl-9 text-sm">{faq.a}</p>
-                            </StaggerItem>
-                        ))}
-                    </StaggerChildren>
-                </div>
-            </section>
-
-            {/* FINAL CTA */}
-            {/* Contact Form Section */}
-            <section className="py-20 bg-slate-50">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <FadeUp className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                            ขอใบเสนอราคาฟรี
-                        </h2>
-                        <p className="text-slate-600 text-lg">
-                            เลือกแพ็คเกจที่เหมาะกับธุรกิจคุณ และรับคำปรึกษาจากผู้เชี่ยวชาญ
-                        </p>
-                        <p className="text-slate-500 text-sm mt-2">
-                            ติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ
-                        </p>
-                    </FadeUp>
-                    <FadeUp delay={0.2}>
-                        <ContactForm />
-                    </FadeUp>
+            {/* FAQ + Contact Form — dark combined section */}
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <FaqAndForm faqs={faqs} />
                 </div>
             </section>
 
