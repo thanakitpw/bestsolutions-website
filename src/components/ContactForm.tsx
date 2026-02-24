@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackContactFormSubmit } from "@/lib/analytics";
 
 export const PACKAGE_OPTIONS = [
   { id: "basic",     name: "Starter Website",   price: "5,000 บาท" },
@@ -42,6 +43,10 @@ export function ContactForm({ initialPackage = "" }: ContactFormProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, timestamp: new Date().toISOString(), source: "website_design_page" }),
       });
+      
+      // Track form submission in Google Analytics
+      trackContactFormSubmit(formData.package || 'unknown');
+      
       setIsSubmitted(true);
     } catch (err) {
       console.error(err);

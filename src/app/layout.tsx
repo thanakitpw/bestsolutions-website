@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const notoSansThai = Noto_Sans_Thai({
   weight: ['400', '500', '600', '700'],
@@ -60,6 +61,7 @@ export default function RootLayout({
           "antialiased min-h-screen bg-slate-50"
         )}
       >
+        <GoogleAnalytics />
         {children}
       </body>
     </html>

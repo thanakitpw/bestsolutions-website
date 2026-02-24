@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { trackPackageSelect } from "@/lib/analytics";
 
 /* ── Button that scrolls to #contact-form and pre-selects a package ── */
 interface ScrollButtonProps {
@@ -12,6 +13,9 @@ interface ScrollButtonProps {
 
 export function ScrollToFormButton({ pkgId, btnClass }: ScrollButtonProps) {
     const handleClick = () => {
+        // Track package selection in Google Analytics
+        trackPackageSelect(pkgId);
+        
         // store the selected package in sessionStorage so FaqAndForm can pick it up
         sessionStorage.setItem("selectedPackage", pkgId);
         // dispatch a custom event so FaqAndForm reacts immediately (same page)
