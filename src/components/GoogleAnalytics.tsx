@@ -21,9 +21,20 @@ export function GoogleAnalytics() {
         src="https://www.googletagmanager.com/gtag/js?id=AW-17974230607"
         strategy="afterInteractive"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config'
+      <Script id="google-analytics" strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '` + GA_MEASUREMENT_ID + `', {
+              page_location: window.location.href,
+              page_title: document.title,
+            });
+            gtag('config', 'AW-17974230607');
+          `
+        }}
+      />
+    </>
+  );
+}

@@ -87,4 +87,33 @@ export default function ThankYouPage() {
             </div>
 
             {/* Timer reminder */}
-            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl b
+            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-300 text-sm mb-10">
+              <Clock className="w-4 h-4 text-[#F51036]" />
+              ติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ (จ–ศ 9:00–18:00 น.)
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#F51036] to-orange-500 text-white font-bold text-base rounded-full shadow-lg shadow-red-500/30 hover:scale-[1.02] transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+                ติดต่อเพิ่มเติมผ่าน LINE
+              </a>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/20 text-white font-bold text-base rounded-full hover:bg-white/10 transition-all"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                กลับหน้าแรก
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
