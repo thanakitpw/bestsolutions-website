@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { CheckCircle2, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackContactFormSubmit } from "@/lib/analytics";
+import { useRouter } from "next/navigation";
 
 export const PACKAGE_OPTIONS = [
   { id: "basic",     name: "Starter Website",   price: "5,000 บาท" },
@@ -20,6 +21,7 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ initialPackage = "" }: ContactFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -28,7 +30,6 @@ export function ContactForm({ initialPackage = "" }: ContactFormProps) {
     contactMethod: "phone",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     if (initialPackage) setFormData(prev => ({ ...prev, package: initialPackage }));
@@ -47,10 +48,12 @@ export function ContactForm({ initialPackage = "" }: ContactFormProps) {
       // Track form submission in Google Analytics
       trackContactFormSubmit(formData.package || 'unknown');
       
-      setIsSubmitted(true);
+      // Redirect to thank-you page
+      router.push('/thank-you');
     } catch (err) {
       console.error(err);
-      setIsSubmitted(true); // show success even on network error (fail-open UX)
+      // Still redirect even on error (fail-open UX)
+      router.push('/thank-you');
     } finally {
       setIsSubmitting(false);
     }
@@ -60,16 +63,6 @@ export function ContactForm({ initialPackage = "" }: ContactFormProps) {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
-  if (isSubmitted) {
-    return (
-      <div className="rounded-2xl bg-white/10 border border-white/20 p-10 text-center">
-        <CheckCircle2 className="w-14 h-14 text-green-400 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-white mb-2">ส่งข้อมูลเรียบร้อย!</h3>
-        <p className="text-white/70">ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ</p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
