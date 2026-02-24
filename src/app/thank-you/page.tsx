@@ -1,14 +1,21 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import { CheckCircle2, ArrowLeft, MessageCircle, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CheckCircle2, ArrowLeft, MessageCircle, Clock, Search, Pencil } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "ขอบคุณที่ติดต่อเรา | Best Solutions",
   description: "ได้รับข้อมูลของคุณเรียบร้อยแล้ว ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง",
   robots: "noindex, nofollow",
 };
+
+const LINE_URL = "https://lin.ee/IlvhwZV";
+
+const steps = [
+  { icon: Search, step: "01", title: "วิเคราะห์ความต้องการ", desc: "ทีมงานรับข้อมูลและศึกษาธุรกิจของคุณ" },
+  { icon: MessageCircle, step: "02", title: "โทรติดต่อกลับ", desc: "ภายใน 24 ชั่วโมงในวันทำการ" },
+  { icon: Pencil, step: "03", title: "เสนอราคาและเริ่มงาน", desc: "ยืนยันแพ็คเกจและเริ่มพัฒนาเว็บไซต์" },
+];
 
 export default function ThankYouPage() {
   return (
@@ -23,74 +30,89 @@ export default function ThankYouPage() {
           });
         `}
       </Script>
-      
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center px-4">
-      <div className="max-w-2xl w-full">
-        <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center">
-          {/* Success Icon */}
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 className="w-10 h-10 text-green-600" />
-          </div>
 
-          {/* Main Message */}
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            ขอบคุณที่ติดต่อเรา!
-          </h1>
-          <p className="text-lg text-slate-600 mb-8">
-            ได้รับข้อมูลของคุณเรียบร้อยแล้ว<br />
-            ทีมงานจะโทรติดต่อกลับภายใน <span className="font-bold text-[#F51036]">24 ชั่วโมง</span> ในวันทำการ
-          </p>
+      <div className="min-h-screen bg-[#0B0F19] relative overflow-hidden flex flex-col">
+        {/* Background decorations */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#F51036]/15 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#25137A]/30 rounded-full blur-[100px] pointer-events-none" />
 
-          {/* Next Steps */}
-          <div className="bg-slate-50 rounded-2xl p-6 mb-8 text-left">
-            <h2 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-              <span className="w-6 h-6 bg-[#F51036] text-white rounded-full flex items-center justify-center text-sm">!</span>
-              ขั้นตอนถัดไป
-            </h2>
-            <ul className="space-y-3 text-slate-700">
-              <li className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 text-xs flex items-center justify-center mt-0.5 shrink-0">1</div>
-                <span>ทีมงานจะทำการวิเคราะห์ความต้องการของคุณ</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 text-xs flex items-center justify-center mt-0.5 shrink-0">2</div>
-                <span>เตรียมข้อเสนอที่เหมาะสมกับธุรกิจของคุณ</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 text-xs flex items-center justify-center mt-0.5 shrink-0">3</div>
-                <span>โทรติดต่อนัดหมายเพื่อปรึกษาฟรี</span>
-              </li>
-            </ul>
-          </div>
+        {/* Logo bar */}
+        <div className="relative z-10 px-6 pt-8">
+          <Link href="/" className="inline-block">
+            <span className="text-white font-extrabold text-xl tracking-tight">
+              Best<span className="text-[#F51036]">Solutions</span>
+            </span>
+          </Link>
+        </div>
 
-          {/* Quick Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/">
-              <Button variant="outline" className="w-full sm:w-auto">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                กลับหน้าแรก
-              </Button>
-            </Link>
-            <a href="https://lin.ee/your-line-id" target="_blank" rel="noopener noreferrer">
-              <Button className="w-full sm:w-auto bg-gradient-to-r from-[#F51036] to-orange-500">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                ติดต่อผ่าน LINE
-              </Button>
-            </a>
-          </div>
+        {/* Main content */}
+        <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-16">
+          <div className="max-w-2xl w-full text-center">
 
-          {/* Contact Info */}
-          <div className="mt-8 pt-8 border-t border-slate-200">
-            <p className="text-slate-500 text-sm mb-4">หากต้องการติดต่อด่วน</p>
-            <div className="flex justify-center gap-6">
-              <a href="tel:080-123-4567" className="flex items-center gap-2 text-slate-700 hover:text-[#F51036] transition-colors">
-                <Phone className="w-4 h-4" />
-                080-123-4567
+            {/* Success badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-semibold mb-8">
+              <CheckCircle2 className="w-4 h-4" />
+              ส่งข้อมูลเรียบร้อยแล้ว
+            </div>
+
+            {/* Heading */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+              ขอบคุณที่<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F51036] via-orange-400 to-amber-400">
+                ไว้วางใจเรา!
+              </span>
+            </h1>
+
+            <p className="text-lg text-slate-400 mb-12 leading-relaxed">
+              ได้รับข้อมูลของคุณแล้ว ทีมงานจะโทรติดต่อกลับภายใน
+              <span className="text-white font-bold"> 24 ชั่วโมง </span>
+              ในวันทำการ
+            </p>
+
+            {/* Steps */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+              {steps.map(({ icon: Icon, step, title, desc }) => (
+                <div key={step} className="rounded-2xl bg-white/5 border border-white/10 p-6 text-left hover:bg-white/8 transition-colors">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 rounded-xl bg-[#F51036]/20 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-[#F51036]" />
+                    </div>
+                    <span className="text-white/30 text-xs font-bold">{step}</span>
+                  </div>
+                  <h3 className="text-white font-bold text-sm mb-1">{title}</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Timer reminder */}
+            <div className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-300 text-sm mb-10">
+              <Clock className="w-4 h-4 text-[#F51036]" />
+              ติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ (จ–ศ 9:00–18:00 น.)
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={LINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#F51036] to-orange-500 text-white font-bold text-base rounded-full shadow-lg shadow-red-500/30 hover:scale-[1.02] transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+                ติดต่อเพิ่มเติมผ่าน LINE
               </a>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 border border-white/20 text-white font-bold text-base rounded-full hover:bg-white/10 transition-all"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                กลับหน้าแรก
+              </Link>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );
