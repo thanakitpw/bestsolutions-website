@@ -55,13 +55,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body
         className={cn(
           notoSansThai.className,
           "antialiased min-h-screen bg-slate-50"
         )}
       >
-        <GoogleAnalytics />
         {children}
       </body>
     </html>

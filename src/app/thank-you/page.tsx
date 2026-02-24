@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 import { CheckCircle2, ArrowLeft, MessageCircle, Clock, Search, Pencil } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -20,16 +19,8 @@ const steps = [
 export default function ThankYouPage() {
   return (
     <>
-      {/* Google Ads Conversion Tracking */}
-      <Script id="google-ads-conversion">
-        {`
-          gtag('event', 'conversion', {
-            'send_to': 'AW-YOUR_CONVERSION_ID/YOUR_CONVERSION_LABEL',
-            'value': 1.0,
-            'currency': 'THB'
-          });
-        `}
-      </Script>
+      {/* TODO: Add Google Ads Conversion tracking here once you have the Conversion Label */}
+      {/* Example: <Script id="google-ads-conversion" dangerouslySetInnerHTML={{ __html: "gtag('event','conversion',{'send_to':'AW-17974230607/YOUR_LABEL'});" }} /> */}
 
       <div className="min-h-screen bg-[#0B0F19] relative overflow-hidden flex flex-col">
         {/* Background decorations */}
