@@ -52,6 +52,12 @@ const testimonials = [
   }
 ];
 
+// Function to mask name to show only 2-3 characters
+const maskName = (name: string): string => {
+  if (name.length <= 3) return name;
+  return name.slice(0, 3) + "*".repeat(name.length - 3);
+};
+
 export const WhyChooseUs = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -134,7 +140,7 @@ export const WhyChooseUs = () => {
                     ))}
                   </div>
                   <p className="text-slate-700 mb-3 leading-relaxed">"{testimonials[currentTestimonial].content}"</p>
-                  <p className="text-sm font-bold text-[var(--color-primary-start)]">- {testimonials[currentTestimonial].author}</p>
+                  <p className="text-sm font-bold text-[var(--color-primary-start)]">- {maskName(testimonials[currentTestimonial].author)}</p>
                 </div>
 
                 {/* Navigation Buttons */}
