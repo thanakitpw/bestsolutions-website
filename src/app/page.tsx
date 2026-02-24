@@ -212,9 +212,9 @@ export default async function Home() {
                 อย่าปล่อยให้โอกาสเติบโตหลุดลอยไป ปรึกษาเราวันนี้เพื่อวางแผนกลยุทธ์ที่ใช่สำหรับคุณ
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/services/website-design">
+                <Link href="/contact">
                   <Button size="lg" className="bg-white text-[var(--color-primary-end)] hover:bg-slate-50 border-0 h-14 px-8 text-lg rounded-full w-full sm:w-auto">
-                    ขอใบเสนอราคาฟรี
+                    ติดต่อเรา
                   </Button>
                 </Link>
                 <Link href="/services">
