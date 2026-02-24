@@ -9,7 +9,6 @@ import type { PortfolioProject, ServiceCategory } from "@/data/portfolio";
 interface Category {
   id: ServiceCategory;
   label: string;
-  emoji: string;
   description: string;
 }
 
