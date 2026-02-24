@@ -10,7 +10,6 @@ import { HowWeWork } from "@/components/HowWeWork";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { OurClients } from "@/components/OurClients";
 import { LatestBlogPosts } from "@/components/LatestBlogPosts";
-import { ContactForm } from "@/components/ContactForm";
 import { WebDesignPopup } from "@/components/WebDesignPopup";
 import { Suspense } from "react";
 
@@ -203,21 +202,34 @@ export default async function Home() {
       </Suspense>
 
       
-      {/* Contact Form Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              ขอใบเสนอราคาฟรี
-            </h2>
-            <p className="text-slate-600 text-lg">
-              เลือกแพ็คเกจที่เหมาะกับธุรกิจคุณ และรับคำปรึกษาจากผู้เชี่ยวชาญ
-            </p>
-            <p className="text-slate-500 text-sm mt-2">
-              ติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ
-            </p>
+      {/* CTA Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-r from-[#25137A] to-[#F51036] px-8 py-16 md:px-16 md:py-24 text-center items-center justify-center">
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">พร้อมยกระดับธุรกิจของคุณ<br />หรือยัง?</h2>
+              <p className="text-white/80 text-lg md:text-xl mb-10 font-light">
+                อย่าปล่อยให้โอกาสเติบโตหลุดลอยไป ปรึกษาเราวันนี้เพื่อวางแผนกลยุทธ์ที่ใช่สำหรับคุณ
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/services/website-design">
+                  <Button size="lg" className="bg-white text-[var(--color-primary-end)] hover:bg-slate-50 border-0 h-14 px-8 text-lg rounded-full w-full sm:w-auto">
+                    ขอใบเสนอราคาฟรี
+                  </Button>
+                </Link>
+                <Link href="/services">
+                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 hover:text-white h-14 px-8 text-lg rounded-full w-full sm:w-auto bg-transparent">
+                    ดูแพ็คเกจบริการ
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Decor */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-30 pointer-events-none">
+              <div className="absolute -top-[50%] -left-[20%] w-[80%] h-[200%] bg-white/10 rotate-12 blur-3xl"></div>
+            </div>
           </div>
-          <ContactForm />
         </div>
       </section>
 

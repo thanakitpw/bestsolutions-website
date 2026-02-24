@@ -4,6 +4,7 @@ import { CheckCircle2, Clock, Shield, Star, Users, MessageCircle, ArrowRight } f
 import { packages, whyUs, steps, examples, testimonials, faqs } from "./data";
 import Image from "next/image";
 import { FadeUp, FadeIn, StaggerChildren, StaggerItem } from "./AnimatedSection";
+import { ContactForm } from "@/components/ContactForm";
 
 // Function to mask name to show only 2-3 characters
 const maskName = (name: string): string => {
@@ -266,25 +267,24 @@ export default function WebDesignLandingPage() {
             </section>
 
             {/* FINAL CTA */}
-            <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-                <FadeUp>
-                <div className="max-w-4xl mx-auto rounded-[2.5rem] overflow-hidden bg-gradient-to-r from-[#25137A] to-[#F51036] px-8 py-16 md:px-16 text-center relative">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]"/>
-                    <div className="relative z-10">
-                        <p className="text-white/60 text-sm font-bold uppercase tracking-widest mb-3">พร้อมเริ่มต้นแล้วหรือยัง?</p>
-                        <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                            เว็บไซต์ที่ดีสร้างได้<br className="hidden md:block"/>ในราคาที่คุณจ่ายได้
+            {/* Contact Form Section */}
+            <section className="py-20 bg-slate-50">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <FadeUp className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                            ขอใบเสนอราคาฟรี
                         </h2>
-                        <p className="text-white/70 mb-10 text-lg">ทักมาหาเราวันนี้ ปรึกษาฟรี ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด</p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white text-[#F51036] font-bold px-10 py-4 rounded-full hover:bg-slate-50 transition-colors shadow-xl text-lg">
-                                <MessageCircle className="w-5 h-5"/>ทักมาหาเราผ่าน LINE
-                            </a>
-                        </div>
-                        <p className="text-white/50 text-sm mt-8">ตอบทุกคำถามภายใน 5 นาที · เปิดบริการทุกวัน 9:00 - 21:00 น.</p>
-                    </div>
+                        <p className="text-slate-600 text-lg">
+                            เลือกแพ็คเกจที่เหมาะกับธุรกิจคุณ และรับคำปรึกษาจากผู้เชี่ยวชาญ
+                        </p>
+                        <p className="text-slate-500 text-sm mt-2">
+                            ติดต่อกลับภายใน 24 ชั่วโมงในวันทำการ
+                        </p>
+                    </FadeUp>
+                    <FadeUp delay={0.2}>
+                        <ContactForm />
+                    </FadeUp>
                 </div>
-                </FadeUp>
             </section>
 
             <Footer />
