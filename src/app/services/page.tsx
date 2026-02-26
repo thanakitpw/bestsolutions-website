@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
-import { ArrowRight, Monitor, TrendingUp, Search, Share2, FileText, CheckCircle, ChevronRight, Bot } from "lucide-react";
+import { ArrowRight, Monitor, TrendingUp, Search, Share2, FileText, CheckCircle, ChevronRight, Bot, Mail } from "lucide-react";
 
 export const metadata = {
     title: "บริการของเรา | Best Solutions - Digital Marketing Agency",
@@ -137,6 +137,31 @@ const services = [
             "Dashboard รายงานผลแบบ Real-time",
         ],
         results: ["ลดเวลางาน Admin ลง 60-80%", "ตอบลูกค้าเร็วขึ้น 10 เท่า ไม่มีพลาด", "เพิ่ม Conversion จาก Lead ได้ 2-3 เท่า"],
+        landingPageUrl: "/services/ai-automation",
+    },
+    {
+        id: "ai-email",
+        label: "AI ตอบอีเมล",
+        title: "AI ตอบอีเมล B2B",
+        subtitle: "AI Email Automation",
+        icon: Mail,
+        gradient: "from-blue-600 to-indigo-600",
+        lightBg: "bg-blue-50",
+        lightBorder: "border-blue-100",
+        accentText: "text-blue-600",
+        accentBg: "bg-blue-600",
+        problem: "ทีมขายเสียเวลาตอบอีเมลซ้ำๆ ทุกวัน ลูกค้ารอนานและซื้อที่อื่นแทน",
+        description: "ระบบ AI อ่านอีเมลลูกค้า ค้นหาข้อมูลสินค้าจาก Catalog ออก Draft ตอบกลับและใบเสนอราคา อัตโนมัติภายใน 1 นาที รองรับไทย/อังกฤษ/จีน",
+        landingPageUrl: "/services/ai-email",
+        features: [
+            "AI อ่านและตอบอีเมลอัตโนมัติ",
+            "RAG Engine จับคู่สินค้าจาก Catalog",
+            "ออกใบเสนอราคาอัตโนมัติ",
+            "รองรับไทย/อังกฤษ/จีน",
+            "Admin Review ก่อนส่งได้",
+            "Dashboard + Analytics Real-time",
+        ],
+        results: ["ลดเวลา Admin 80%", "ตอบลูกค้าภายใน 1 นาที 24/7", "เพิ่ม Lead Conversion 3 เท่า"],
     },
     {
         id: "content",

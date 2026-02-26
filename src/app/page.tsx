@@ -186,8 +186,7 @@ export default async function Home() {
             </Link>
 
             {/* AI Automation - Featured */}
-            <Link href="/services#ai-automation" className="group relative rounded-2xl border p-7 transition-all duration-300 overflow-hidden bg-gradient-to-br from-violet-600/20 to-cyan-500/10 border-violet-500/30 hover:border-violet-400/50 hover:from-violet-600/25 hover:to-cyan-500/15">
-              {/* New badge */}
+            <Link href="/services/ai-automation" className="group relative rounded-2xl border p-7 transition-all duration-300 overflow-hidden bg-gradient-to-br from-violet-600/20 to-cyan-500/10 border-violet-500/30 hover:border-violet-400/50 hover:from-violet-600/25 hover:to-cyan-500/15">
               <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 text-[10px] font-bold uppercase tracking-wider">
                 New
               </div>
@@ -200,6 +199,25 @@ export default async function Home() {
                   ระบบ AI ทำงานแทนคนได้ 24 ชั่วโมง ตอบลูกค้า ส่ง Follow-up และเชื่อมต่อทุกแพลตฟอร์มอัตโนมัติ
                 </p>
                 <span className="inline-flex items-center gap-1 text-violet-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+
+            {/* AI Email - Featured */}
+            <Link href="/services/ai-email" className="group relative rounded-2xl border p-7 transition-all duration-300 overflow-hidden bg-gradient-to-br from-blue-600/20 to-indigo-600/10 border-blue-500/30 hover:border-blue-400/50 hover:from-blue-600/25 hover:to-indigo-600/15">
+              <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-[10px] font-bold uppercase tracking-wider">
+                New
+              </div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <FileText className="w-6 h-6 text-blue-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">AI ตอบอีเมล B2B</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  AI อ่านอีเมลลูกค้า จับคู่สินค้าจาก Catalog และออก Draft ตอบกลับอัตโนมัติภายใน 1 นาที
+                </p>
+                <span className="inline-flex items-center gap-1 text-blue-400 text-xs font-semibold group-hover:gap-2 transition-all">
                   ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
