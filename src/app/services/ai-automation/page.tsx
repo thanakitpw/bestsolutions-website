@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { CheckCircle2, Clock, Shield, Star, Zap, MessageCircle, ArrowRight, Bot, Link2, BarChart3 } from "lucide-react";
+import { CheckCircle2, Clock, Shield, Star, Zap, MessageCircle, ArrowRight, Bot, Link2, BarChart3, Mail, GitBranch, FileText, ChevronRight } from "lucide-react";
 import { packages, whyUs, steps, testimonials, faqs } from "./data";
 import { FadeUp, StaggerChildren, StaggerItem } from "../website-design/AnimatedSection";
 import { ScrollToFormButton, FaqAndForm } from "../website-design/PackageSelectClient";
@@ -153,33 +153,84 @@ export default function AiAutomationLandingPage() {
                 </div>
             </section>
 
-            {/* FEATURES */}
+            {/* AI SERVICES GRID */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <FadeUp>
                         <div className="text-center mb-12">
-                            <span className="text-violet-600 font-bold text-xs uppercase tracking-widest">ฟีเจอร์หลัก</span>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">ระบบ AI ที่ทำได้ทุกอย่าง</h2>
-                            <p className="text-slate-500 mt-3 max-w-xl mx-auto">ครบทุก Workflow ที่ธุรกิจต้องการ ตั้งแต่รับ Lead จนปิดการขาย</p>
+                            <span className="text-violet-600 font-bold text-xs uppercase tracking-widest">บริการ AI ของเรา</span>
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">เลือกบริการที่ตรงกับธุรกิจ</h2>
+                            <p className="text-slate-500 mt-3 max-w-xl mx-auto">กดแต่ละบริการเพื่อดูรายละเอียดและแพ็คเกจราคา</p>
                         </div>
                     </FadeUp>
-                    <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <StaggerChildren className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
-                            { icon: MessageCircle, color: "bg-violet-100 text-violet-600", title: "AI Chatbot 24/7", desc: "ตอบลูกค้าอัตโนมัติด้วย AI ที่เข้าใจบริบทและเรียนรู้จากข้อมูลธุรกิจของคุณ" },
-                            { icon: Bot, color: "bg-cyan-100 text-cyan-600", title: "Lead Qualification", desc: "คัดกรอง Lead อัตโนมัติ ส่งต่อเฉพาะลูกค้าที่พร้อมซื้อจริงให้ทีมขาย" },
-                            { icon: Zap, color: "bg-amber-100 text-amber-600", title: "Auto Follow-up", desc: "ส่ง Follow-up ใบเสนอราคาและข้อความอัตโนมัติตามเวลาที่ตั้งไว้ ไม่พลาดทุก Lead" },
-                            { icon: Link2, color: "bg-emerald-100 text-emerald-600", title: "Multi-Platform", desc: "เชื่อมต่อ LINE, Facebook, Instagram ในระบบเดียว บริหารง่าย ไม่ต้องสลับแอป" },
-                            { icon: BarChart3, color: "bg-rose-100 text-rose-600", title: "Google Sheets / CRM", desc: "บันทึก Lead และข้อมูลลูกค้าลง Google Sheets หรือ CRM ของคุณอัตโนมัติ" },
-                            { icon: Clock, color: "bg-purple-100 text-purple-600", title: "Real-time Dashboard", desc: "ติดตามสถิติการสนทนา Conversion Rate และประสิทธิภาพ AI แบบ Real-time" },
-                        ].map((f, i) => (
+                            {
+                                href: "/services/ai-automation/ai-chatbot",
+                                icon: MessageCircle,
+                                iconBg: "bg-violet-100 text-violet-600",
+                                accent: "text-violet-600",
+                                hoverBorder: "hover:border-violet-300",
+                                badge: "ยอดนิยม",
+                                badgeBg: "bg-violet-100 text-violet-700",
+                                title: "AI Chatbot 24/7",
+                                desc: "ตอบลูกค้าอัตโนมัติทุกแพลตฟอร์ม LINE, Facebook, Instagram",
+                                from: "เริ่ม ฿9,990/ปี",
+                            },
+                            {
+                                href: "/services/ai-automation/ai-email",
+                                icon: Mail,
+                                iconBg: "bg-blue-100 text-blue-600",
+                                accent: "text-blue-600",
+                                hoverBorder: "hover:border-blue-300",
+                                badge: "B2B",
+                                badgeBg: "bg-blue-100 text-blue-700",
+                                title: "AI ตอบอีเมล",
+                                desc: "RAG อ่านอีเมลลูกค้า ออก Draft ใบเสนอราคาอัตโนมัติ",
+                                from: "เริ่ม ฿9,900/ปี",
+                            },
+                            {
+                                href: "/services/ai-automation/ai-workflow",
+                                icon: GitBranch,
+                                iconBg: "bg-emerald-100 text-emerald-600",
+                                accent: "text-emerald-600",
+                                hoverBorder: "hover:border-emerald-300",
+                                badge: null,
+                                badgeBg: "",
+                                title: "AI Workflow",
+                                desc: "เชื่อมต่อแอปธุรกิจ 300+ ลดงาน Manual อัตโนมัติ",
+                                from: "เริ่ม ฿9,990/ปี",
+                            },
+                            {
+                                href: "/services/ai-automation/ai-document",
+                                icon: FileText,
+                                iconBg: "bg-orange-100 text-orange-600",
+                                accent: "text-orange-600",
+                                hoverBorder: "hover:border-orange-300",
+                                badge: null,
+                                badgeBg: "",
+                                title: "AI อ่านเอกสาร",
+                                desc: "แปลง PDF, Invoice, ใบสมัคร เป็นข้อมูลดิจิทัลอัตโนมัติ",
+                                from: "เริ่ม ฿9,990/ปี",
+                            },
+                        ].map((s, i) => (
                             <StaggerItem key={i}>
-                                <div className="group bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg hover:border-violet-200 transition-all">
-                                    <div className={`w-12 h-12 rounded-xl ${f.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                                        <f.icon className="w-6 h-6" />
+                                <a href={s.href} className={`group flex flex-col h-full bg-white rounded-2xl p-5 border border-slate-100 shadow-sm ${s.hoverBorder} hover:shadow-md transition-all duration-200`}>
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className={`w-11 h-11 rounded-xl ${s.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                                            <s.icon className="w-5 h-5" />
+                                        </div>
+                                        {s.badge && (
+                                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${s.badgeBg}`}>{s.badge}</span>
+                                        )}
                                     </div>
-                                    <h3 className="font-bold text-slate-900 text-lg mb-2">{f.title}</h3>
-                                    <p className="text-slate-500 text-sm leading-relaxed">{f.desc}</p>
-                                </div>
+                                    <h3 className="font-bold text-slate-900 text-base mb-1.5 leading-snug">{s.title}</h3>
+                                    <p className="text-slate-500 text-xs leading-relaxed flex-1 mb-4">{s.desc}</p>
+                                    <div className={`flex items-center justify-between text-xs font-semibold ${s.accent}`}>
+                                        <span>{s.from}</span>
+                                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                                    </div>
+                                </a>
                             </StaggerItem>
                         ))}
                     </StaggerChildren>
