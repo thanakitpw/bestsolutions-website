@@ -450,7 +450,7 @@ export default function AiEmailPage() {
                             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">คำถามที่พบบ่อย</h2>
                         </div>
                     </FadeUp>
-                    <FaqAndForm faqs={faqs} serviceId="ai-email" />
+                    <FaqAndForm faqs={faqs} />
                 </div>
             </section>
 
