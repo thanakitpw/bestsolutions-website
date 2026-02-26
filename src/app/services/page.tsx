@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
-import { ArrowRight, Monitor, TrendingUp, Search, Share2, FileText, CheckCircle, ChevronRight } from "lucide-react";
+import { ArrowRight, Monitor, TrendingUp, Search, Share2, FileText, CheckCircle, ChevronRight, Bot } from "lucide-react";
 
 export const metadata = {
     title: "บริการของเรา | Best Solutions - Digital Marketing Agency",
@@ -114,6 +114,29 @@ const services = [
             "ติดตามอันดับรายสัปดาห์",
         ],
         results: ["ติดหน้า 1 Google ภายใน 3-6 เดือน", "Traffic Organic เพิ่ม 200-500%", "ลดการพึ่งพาโฆษณาระยะยาว"],
+    },
+    {
+        id: "ai-automation",
+        label: "AI Automation",
+        title: "AI Automation",
+        subtitle: "Intelligent Business Automation",
+        icon: Bot,
+        gradient: "from-violet-600 to-cyan-500",
+        lightBg: "bg-violet-50",
+        lightBorder: "border-violet-100",
+        accentText: "text-violet-600",
+        accentBg: "bg-violet-600",
+        problem: "งานซ้ำซ้อนกินเวลา ทีมล้า ตอบลูกค้าช้า และพลาดโอกาสขายทุกวันโดยไม่รู้ตัว",
+        description: "นำ AI มาปลดล็อกศักยภาพธุรกิจของคุณ ด้วยระบบ Automation ที่ทำงานแทนคนได้ 24 ชั่วโมง ลดต้นทุน เพิ่มความเร็ว และสร้างประสบการณ์ที่ดีกว่าให้ลูกค้า",
+        features: [
+            "AI Chatbot ตอบลูกค้าอัตโนมัติ 24/7",
+            "ระบบ Lead Qualification อัตโนมัติ",
+            "Auto-reply LINE / Facebook / Instagram",
+            "ออกใบเสนอราคาและ Follow-up อัตโนมัติ",
+            "เชื่อมต่อ CRM และ Google Sheets",
+            "Dashboard รายงานผลแบบ Real-time",
+        ],
+        results: ["ลดเวลางาน Admin ลง 60-80%", "ตอบลูกค้าเร็วขึ้น 10 เท่า ไม่มีพลาด", "เพิ่ม Conversion จาก Lead ได้ 2-3 เท่า"],
     },
     {
         id: "content",

@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Monitor, BarChart3, TrendingUp, ArrowRight } from "lucide-react";
+import { Monitor, BarChart3, TrendingUp, ArrowRight, Search, Share2, FileText, Bot } from "lucide-react";
 import Image from "next/image";
 import { TechStack } from "@/components/TechStack";
 import { AboutUs } from "@/components/AboutUs";
@@ -71,49 +71,150 @@ export default async function Home() {
       <AboutUs />
 
       {/* Services Preview */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-[#0B0F19] relative overflow-hidden">
+        {/* Background grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:32px_32px]" />
+        {/* Glow blobs */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[400px] bg-[#F51036]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#25137A]/20 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900">บริการของเรา</h2>
-            <div className="h-1.5 w-20 bg-gradient-to-r from-[var(--color-primary-start)] to-[var(--color-primary-end)] mx-auto mt-6 rounded-full"></div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#F51036] text-sm font-semibold mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F51036] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F51036]" />
+              </span>
+              บริการของเรา
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+              ครบทุกสิ่งที่ธุรกิจ<br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F51036] via-orange-400 to-amber-400">ต้องการเพื่อเติบโต</span>
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              ตั้งแต่สร้างเว็บไซต์ ยิงแอด ดูแลโซเชียล SEO ไปจนถึง AI Automation ครบในที่เดียว
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="group bg-white rounded-3xl p-8 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-[var(--color-primary-start)]/5 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary-start)] to-[var(--color-primary-end)] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 text-[var(--color-primary-start)] shadow-sm group-hover:scale-110 transition-transform">
-                <Monitor className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[var(--color-primary-start)] transition-colors">Web Design</h3>
-              <p className="text-slate-500 leading-relaxed">
-                ออกแบบและทำเว็บไซต์ให้ทันสมัย รองรับทุกอุปกรณ์ และทำ SEO ได้ดีเยี่ยม
-              </p>
-            </div>
+          {/* Services grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            {/* Service 2 */}
-            <div className="group bg-white rounded-3xl p-8 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-purple-500/5 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary-start)] to-[var(--color-primary-end)] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 text-[#8B1158] shadow-sm group-hover:scale-110 transition-transform">
-                <BarChart3 className="w-8 h-8" />
+            {/* Web Design */}
+            <Link href="/services#web-design" className="group relative rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/8 hover:border-blue-500/30 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-indigo-600/0 group-hover:from-blue-500/5 group-hover:to-indigo-600/10 transition-all duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <Monitor className="w-6 h-6 text-blue-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">รับทำเว็บไซต์</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  ออกแบบเว็บสวย ทันสมัย รองรับมือถือ โหลดเร็ว และ SEO-ready ตั้งแต่วันแรก
+                </p>
+                <span className="inline-flex items-center gap-1 text-blue-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#8B1158] transition-colors">Online Marketing</h3>
-              <p className="text-slate-500 leading-relaxed">
-                ยิงแอด Facebook, Google และ Tiktok ให้ตรงกลุ่มเป้าหมาย คุ้มค่าทุกบาท
-              </p>
-            </div>
+            </Link>
 
-            {/* Service 3 */}
-            <div className="group bg-white rounded-3xl p-8 border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-300 relative overflow-hidden">
-              <div className="absolute left-0 top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary-start)] to-[var(--color-primary-end)] rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <div className="w-16 h-16 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 text-[var(--color-primary-end)] shadow-sm group-hover:scale-110 transition-transform">
-                <TrendingUp className="w-8 h-8" />
+            {/* Online Marketing */}
+            <Link href="/services#ads" className="group relative rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/8 hover:border-red-500/30 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#F51036]/0 to-orange-500/0 group-hover:from-[#F51036]/5 group-hover:to-orange-500/10 transition-all duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-[#F51036]/10 border border-[#F51036]/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="w-6 h-6 text-[#F51036]" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">ยิงแอดโฆษณา</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  บริหาร Facebook & Google Ads อย่างมืออาชีพ วัดผลได้จริง ROAS เฉลี่ย 3-8 เท่า
+                </p>
+                <span className="inline-flex items-center gap-1 text-[#F51036] text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[var(--color-primary-end)] transition-colors">SEO Services</h3>
-              <p className="text-slate-500 leading-relaxed">
-                ดันอันดับเว็บให้ติดหน้าแรก Google เพิ่มยอดคนเข้าชมและยอดขายแบบธรรมชาติ
-              </p>
-            </div>
+            </Link>
+
+            {/* Social Media */}
+            <Link href="/services#social-media" className="group relative rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/8 hover:border-purple-500/30 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/5 group-hover:to-pink-500/10 transition-all duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <Share2 className="w-6 h-6 text-purple-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">ดูแลเพจโซเชียล</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  ดูแล Facebook, Instagram, TikTok ครบวงจร วางแผนคอนเทนต์ โพสต์ และตอบลูกค้า
+                </p>
+                <span className="inline-flex items-center gap-1 text-purple-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+
+            {/* SEO */}
+            <Link href="/services#seo" className="group relative rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/8 hover:border-emerald-500/30 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/0 to-teal-600/0 group-hover:from-emerald-500/5 group-hover:to-teal-600/10 transition-all duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <Search className="w-6 h-6 text-emerald-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">รับทำ SEO</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  ดันเว็บติดหน้า 1 Google ด้วย Keyword ที่ลูกค้าค้นหาจริง เพิ่ม Traffic แบบยั่งยืน
+                </p>
+                <span className="inline-flex items-center gap-1 text-emerald-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+
+            {/* Content */}
+            <Link href="/services#content" className="group relative rounded-2xl bg-white/5 border border-white/10 p-7 hover:bg-white/8 hover:border-amber-500/30 transition-all duration-300 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-orange-500/0 group-hover:from-amber-500/5 group-hover:to-orange-500/10 transition-all duration-300 rounded-2xl" />
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <FileText className="w-6 h-6 text-amber-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">ผลิตคอนเทนต์</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  บทความ กราฟิก ภาพถ่ายสินค้า และวิดีโอ Short-form ที่ดึงดูดและสร้าง Brand ได้จริง
+                </p>
+                <span className="inline-flex items-center gap-1 text-amber-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+
+            {/* AI Automation - Featured */}
+            <Link href="/services#ai-automation" className="group relative rounded-2xl border p-7 transition-all duration-300 overflow-hidden bg-gradient-to-br from-violet-600/20 to-cyan-500/10 border-violet-500/30 hover:border-violet-400/50 hover:from-violet-600/25 hover:to-cyan-500/15">
+              {/* New badge */}
+              <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 text-[10px] font-bold uppercase tracking-wider">
+                New
+              </div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-violet-500/20 border border-violet-500/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  <Bot className="w-6 h-6 text-violet-400" />
+                </div>
+                <h3 className="text-white font-bold text-lg mb-2">AI Automation</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                  ระบบ AI ทำงานแทนคนได้ 24 ชั่วโมง ตอบลูกค้า ส่ง Follow-up และเชื่อมต่อทุกแพลตฟอร์มอัตโนมัติ
+                </p>
+                <span className="inline-flex items-center gap-1 text-violet-400 text-xs font-semibold group-hover:gap-2 transition-all">
+                  ดูรายละเอียด <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </Link>
+
+          </div>
+
+          {/* View all CTA */}
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/15 text-white font-semibold hover:bg-white/10 hover:border-white/25 transition-all"
+            >
+              ดูบริการทั้งหมด <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
