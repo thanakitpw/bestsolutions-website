@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
     LayoutDashboard,
@@ -12,7 +11,9 @@ import {
     Settings,
     Upload,
     Mail,
+    LogOut,
 } from "lucide-react";
+import { logoutAction } from "@/app/admin/login/actions";
 
 const navItems = [
     {
@@ -105,6 +106,15 @@ export function AdminSidebar() {
                     <Settings className="w-4 h-4 text-slate-500" />
                     Settings
                 </Link>
+                <form action={logoutAction}>
+                    <button
+                        type="submit"
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                    >
+                        <LogOut className="w-4 h-4 text-slate-500" />
+                        Logout
+                    </button>
+                </form>
                 <div className="flex items-center gap-3 px-3 py-3 mt-2 rounded-xl bg-white/5 border border-white/5">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shrink-0">
                         <span className="text-white text-xs font-bold">T</span>
