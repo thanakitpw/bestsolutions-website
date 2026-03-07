@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { getArticles } from "@/lib/services/articleService";
+import { getAllArticlesAdmin } from "@/lib/services/articleService";
 import { Plus, Pencil, Eye, FileText, Upload } from "lucide-react";
 import { DeleteBlogButton } from "./DeleteBlogButton";
 
+const DRAFT_THRESHOLD = new Date(1000);
+
+function isPublished(publishedAt: string) {
+    return new Date(publishedAt) > DRAFT_THRESHOLD;
+}
+
 export default async function AdminBlogPage() {
-    const posts = await getArticles();
+    const posts = await getAllArticlesAdmin();
 
     return (
         <div className="max-w-6xl mx-auto space-y-6">
@@ -46,12 +52,15 @@ export default async function AdminBlogPage() {
                             <tr className="border-b border-white/8">
                                 <th className="text-left px-6 py-3.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider">บทความ</th>
                                 <th className="text-left px-6 py-3.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider hidden md:table-cell">หมวดหมู่</th>
+                                <th className="text-left px-6 py-3.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider hidden lg:table-cell">สถานะ</th>
                                 <th className="text-left px-6 py-3.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider hidden lg:table-cell">วันที่</th>
                                 <th className="text-right px-6 py-3.5 text-[11px] font-bold text-slate-500 uppercase tracking-wider">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
-                            {posts.map((post) => (
+                            {posts.map((post) => {
+                                const published = isPublished(post.published_at);
+                                return (
                                 <tr key={post.id} className="hover:bg-white/5 transition-colors group">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-3">
@@ -77,19 +86,37 @@ export default async function AdminBlogPage() {
                                             <span className="text-slate-600 text-xs">—</span>
                                         )}
                                     </td>
+                                    <td className="px-6 py-4 hidden lg:table-cell">
+                                        {published ? (
+                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/15 text-emerald-400 text-xs font-medium rounded-full border border-emerald-500/20">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                                Published
+                                            </span>
+                                        ) : (
+                                            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/15 text-amber-400 text-xs font-medium rounded-full border border-amber-500/20">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                                                Draft
+                                            </span>
+                                        )}
+                                    </td>
                                     <td className="px-6 py-4 text-sm text-slate-500 hidden lg:table-cell">
-                                        {new Date(post.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "short", year: "numeric" })}
+                                        {published
+                                            ? new Date(post.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "short", year: "numeric" })
+                                            : <span className="text-slate-600">—</span>
+                                        }
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center justify-end gap-1">
-                                            <Link
-                                                href={`/blog/${post.slug}`}
-                                                target="_blank"
-                                                className="p-2 text-slate-600 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                                                title="ดูหน้าเว็บ"
-                                            >
-                                                <Eye className="w-4 h-4" />
-                                            </Link>
+                                            {published && (
+                                                <Link
+                                                    href={`/blog/${post.slug}`}
+                                                    target="_blank"
+                                                    className="p-2 text-slate-600 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                                                    title="ดูหน้าเว็บ"
+                                                >
+                                                    <Eye className="w-4 h-4" />
+                                                </Link>
+                                            )}
                                             <Link
                                                 href={`/admin/blog/${post.id}/edit`}
                                                 className="p-2 text-slate-600 hover:text-blue-400 hover:bg-blue-500/10 rounded-lg transition-colors"
@@ -101,7 +128,8 @@ export default async function AdminBlogPage() {
                                         </div>
                                     </td>
                                 </tr>
-                            ))}
+                                );
+                            })}
                         </tbody>
                     </table>
                 )}

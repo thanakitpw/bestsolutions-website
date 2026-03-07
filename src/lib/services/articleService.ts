@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabase";
 import type { Article } from "@/lib/types";
 
-// ดึงบทความทั้งหมด (สำหรับหน้า Listing)
+// ดึงบทความที่ publish แล้ว (สำหรับหน้า Blog สาธารณะ)
 export async function getArticles(): Promise<Article[]> {
     const { data, error } = await supabase
         .from("blog_posts")
@@ -9,10 +9,23 @@ export async function getArticles(): Promise<Article[]> {
         .gt("published_at", "1970-01-01T00:00:00Z") // Only published posts
         .order("published_at", { ascending: false });
 
-    console.log("getArticles result:", { data, error });
-    
     if (error) {
         console.error("Error fetching articles:", error.message);
+        return [];
+    }
+
+    return data ?? [];
+}
+
+// ดึงบทความทั้งหมด รวม draft (สำหรับหน้า Admin)
+export async function getAllArticlesAdmin(): Promise<Article[]> {
+    const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    if (error) {
+        console.error("Error fetching all articles:", error.message);
         return [];
     }
 
