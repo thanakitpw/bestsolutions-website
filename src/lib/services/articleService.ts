@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 import type { Article } from "@/lib/types";
 
 // ดึงบทความที่ publish แล้ว (สำหรับหน้า Blog สาธารณะ)
@@ -17,9 +18,9 @@ export async function getArticles(): Promise<Article[]> {
     return data ?? [];
 }
 
-// ดึงบทความทั้งหมด รวม draft (สำหรับหน้า Admin)
+// ดึงบทความทั้งหมด รวม draft (สำหรับหน้า Admin) — ใช้ service role key เพื่อ bypass RLS
 export async function getAllArticlesAdmin(): Promise<Article[]> {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from("blog_posts")
         .select("*")
         .order("created_at", { ascending: false });
@@ -32,9 +33,9 @@ export async function getAllArticlesAdmin(): Promise<Article[]> {
     return data ?? [];
 }
 
-// ดึงบทความตาม id (สำหรับ Admin Edit)
+// ดึงบทความตาม id (สำหรับ Admin Edit) — ใช้ service role key เพื่อ bypass RLS
 export async function getArticleById(id: string): Promise<Article | null> {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from("blog_posts")
         .select("*")
         .eq("id", id)

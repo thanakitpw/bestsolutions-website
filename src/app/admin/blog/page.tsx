@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getAllArticlesAdmin } from "@/lib/services/articleService";
 import { Plus, Pencil, Eye, FileText, Upload } from "lucide-react";
+
+export const dynamic = "force-dynamic";
 import { DeleteBlogButton } from "./DeleteBlogButton";
 
 const DRAFT_THRESHOLD = new Date(1000);
