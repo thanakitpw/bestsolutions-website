@@ -6,12 +6,6 @@ import Image from "next/image";
 import { FadeUp, FadeIn, StaggerChildren, StaggerItem } from "./AnimatedSection";
 import { ScrollToFormButton, FaqAndForm } from "./PackageSelectClient";
 
-// Function to mask name to show only 2-3 characters
-const maskName = (name: string): string => {
-  if (name.length <= 3) return name;
-  return name.slice(0, 3) + "*".repeat(name.length - 3);
-};
-
 export const metadata = {
     title: "เว็บไซต์ 5,000 บาท! พร้อมใช้งานใน 7 วัน | Best Solutions",
     description: "รับทำเว็บไซต์ราคาถูกที่สุดในตลาด เริ่มต้นเพียง 5,000 บาท พร้อมใช้งานใน 7 วัน รองรับมือถือ 100%",
@@ -57,7 +51,7 @@ export default function WebDesignLandingPage() {
                                 </a>
                             </div>
                             <div className="flex flex-wrap gap-3">
-                                {[{icon:Shield,label:"ดูแลเว็บไซต์หลังส่งมอบ 30 วัน",color:"text-green-400"},{icon:Clock,label:"7 วันเสร็จ",color:"text-blue-400"},{icon:Users,label:"500+ ลูกค้าไว้วางใจ",color:"text-purple-400"}].map(({icon:Icon,label,color})=>(
+                                {[{icon:Shield,label:"ดูแลเว็บไซต์หลังส่งมอบ 30 วัน",color:"text-green-400"},{icon:Clock,label:"7 วันเสร็จ",color:"text-blue-400"},{icon:Users,label:"ดูแลหลังส่งมอบทุกแพ็คเกจ",color:"text-purple-400"}].map(({icon:Icon,label,color})=>(
                                     <div key={label} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-slate-300">
                                         <Icon className={`w-3.5 h-3.5 ${color}`}/>{label}
                                     </div>
@@ -235,7 +229,7 @@ export default function WebDesignLandingPage() {
                                 <p className="text-slate-700 leading-relaxed mb-6 text-[0.95rem]">{t.text}</p>
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#F51036] to-orange-500 flex items-center justify-center text-white font-bold text-sm">{t.name.charAt(2)}</div>
-                                    <div><div className="font-bold text-slate-900 text-sm">{maskName(t.name)}</div><div className="text-slate-500 text-xs">{t.biz}</div></div>
+                                    <div><div className="font-bold text-slate-900 text-sm">{t.name}</div><div className="text-slate-500 text-xs">{t.biz}</div></div>
                                 </div>
                             </StaggerItem>
                         ))}
