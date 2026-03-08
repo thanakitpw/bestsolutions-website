@@ -7,6 +7,8 @@ import { ArrowLeft, Calendar, User, Clock, Tag, ArrowRight, Facebook, Twitter, L
 import type { Metadata } from "next";
 import TableOfContents, { type TocHeading } from "./TableOfContents";
 
+export const dynamic = "force-dynamic";
+
 const BASE_URL = "https://www.bestsolutionscorp.com";
 
 // Inject id="" into h2/h3 and return the heading list for TOC
