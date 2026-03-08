@@ -38,7 +38,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
-    const post = await getArticleBySlug(slug);
+    const post = await getArticleBySlug(decodeURIComponent(slug));
 
     if (!post) {
         return { title: "บทความไม่พบ | Best Solutions Corp" };
@@ -75,7 +75,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: Props) {
     const { slug } = await params;
-    const post = await getArticleBySlug(slug);
+    const post = await getArticleBySlug(decodeURIComponent(slug));
     if (!post) notFound();
 
     const jsonLd = {

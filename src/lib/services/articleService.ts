@@ -49,9 +49,9 @@ export async function getArticleById(id: string): Promise<Article | null> {
     return data as Article;
 }
 
-// ดึงบทความตาม slug (สำหรับหน้า Detail)
+// ดึงบทความตาม slug (สำหรับหน้า Detail) — ใช้ service role key เพื่อ bypass RLS
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
         .from("blog_posts")
         .select("*")
         .eq("slug", slug)
