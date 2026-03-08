@@ -7,7 +7,7 @@ import { ArrowLeft, Calendar, User, Clock, Tag, ArrowRight, Facebook, Twitter, L
 import type { Metadata } from "next";
 import TableOfContents, { type TocHeading } from "./TableOfContents";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // revalidate ทุก 1 ชั่วโมง
 
 const BASE_URL = "https://www.bestsolutionscorp.com";
 

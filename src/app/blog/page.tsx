@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     },
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60; // revalidate ทุก 60 วินาที
 
 export default async function BlogPage() {
     const blogPosts = await getArticles();
