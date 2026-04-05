@@ -98,17 +98,20 @@
 
 ### 2E. Portfolio Page (`/portfolio`)
 
-- [ ] Content Plan -- listing layout, filter/categories, card design
-- [ ] Copywriting -- page headline, description
-- [ ] Portfolio Detail Page template
-- [ ] SEO Keywords
-- [ ] Multi-Agent Review
+- [x] Content Plan -- listing layout, filter/categories, card design
+- [x] Copywriting -- page headline, description
+- [x] Portfolio Detail Page template
+- [x] SEO Keywords
+- [x] Multi-Agent Review — approved + แก้ meta title/desc length, sticky filter mobile, SERVICE_LABELS/INDUSTRY_LABELS map, LINE sticky button, testimonial fallback, lightbox a11y, schema dateModified + numberOfItems, canonical rule filtered URLs
 
 ### 2F. Blog Page (`/blog`) -- มีอยู่แล้ว
 
-- [ ] Review design ปัจจุบัน
-- [ ] Blog listing layout redesign (ถ้าจำเป็น)
-- [ ] Blog detail page redesign (ถ้าจำเป็น)
+- [x] Review design ปัจจุบัน — **Verdict: Minor tweaks only** (`blog/00-review-and-plan.md`)
+- [x] Blog listing layout — ไม่ rewrite, ทำ tweak (hero orbs, category filter, LINE CTA)
+- [x] Blog detail page — ไม่ rewrite, ของเดิมตรง design system ~90%
+- P0: BreadcrumbList + Blog schema, canonical, next/image (LCP)
+- P1: hero blur orbs, unify blue `#303092`, category filter, LINE share, TOC mobile accordion
+- P2: reading progress, inline CTA, search, pagination, RSS
 
 ### 2G. Contact Page (`/contact`)
 
@@ -119,8 +122,8 @@
 
 ### 2H. Thank You Page (`/thank-you`)
 
-- [ ] Content Plan -- confirmation message, next steps, upsell
-- [ ] Copywriting
+- [x] Content Plan -- confirmation message, next steps, upsell
+- [x] Copywriting
 
 ---
 
@@ -158,38 +161,39 @@
 
 ### 3D. Services Overview
 
-- [ ] ออกแบบ overview page ใน Paper
-- [ ] Review checkpoint
+- [x] ออกแบบ overview page ใน Paper
+- [x] Review checkpoint
 - [ ] User approve
 
 ### 3E. Service Detail Pages (7 หน้า)
 
-- [ ] Website Design page
-- [ ] Ads page
-- [ ] SEO page
-- [ ] Social Media page
-- [ ] AI Automation page (single page + anchors)
-- [ ] Video Production page
-- [ ] Lead Generation page
+- [x] Website Design page
+- [x] Ads page
+- [x] SEO page
+- [x] Social Media page
+- [x] AI Automation page (single page + anchors)
+- [x] Video Production page
+- [x] Lead Generation page
 - [ ] Review checkpoint
 - [ ] User approve
 
 ### 3F. Portfolio Page
 
-- [ ] Portfolio listing
-- [ ] Portfolio detail page
+- [x] Portfolio listing
+- [x] Portfolio detail page
 - [ ] Review checkpoint
 - [ ] User approve
 
 ### 3G. Blog Page (review)
 
-- [ ] Blog listing redesign (ถ้าจำเป็น)
-- [ ] Blog detail redesign (ถ้าจำเป็น)
+- [x] Blog listing redesign — **ไม่ต้องออกแบบใหม่ใน Paper** (ใช้ของเดิม + tweak)
+- [x] Blog detail redesign — **ไม่ต้องออกแบบใหม่ใน Paper** (ตรง design system แล้ว)
+- ดู action items ใน `content-plan/blog/00-review-and-plan.md`
 
 ### 3H. Contact Page
 
-- [ ] ออกแบบ Contact page
-- [ ] Review checkpoint
+- [x] ออกแบบ Contact page
+- [x] Review checkpoint
 - [ ] User approve
 
 ### 3I. Responsive Design
