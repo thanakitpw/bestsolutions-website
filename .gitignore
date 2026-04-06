@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 **/node_modules
+
+# Vercel
+.vercel
 /.pnp
 .pnp.*
 .yarn/*
@@ -42,3 +45,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 best-solutions-app-ae1533e6c29f.json
+.env*.local
